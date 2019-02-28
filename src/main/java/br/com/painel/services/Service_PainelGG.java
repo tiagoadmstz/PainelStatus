@@ -36,7 +36,7 @@ public final class Service_PainelGG extends Service<PainelGG> {
                     while (true) {
                         PainelPrincipal painelPrincipal = new PainelPrincipal();
                         painelPrincipal.setValuesByResultSet(SQLUtil.getResultSetPainelPrincipal());
-                        setDados(form, this);
+                        setDados(form, painelPrincipal);
                         toogleOnOffFields(form.getOnOffFields());
                         alarmeVelocidade(painelPrincipal);
                         Thread.sleep(5000l);

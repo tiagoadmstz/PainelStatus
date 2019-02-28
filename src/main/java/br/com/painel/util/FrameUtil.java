@@ -25,6 +25,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -202,11 +204,22 @@ public class FrameUtil {
     private static void setFromFrame(JFrame frame, Method mtFrame, Object value) {
         try {
             if (mtFrame.getReturnType() == JLabel.class) {
-                mtFrame.invoke(frame).getClass().getMethod("setText", String.class).invoke(mtFrame.invoke(frame), String.valueOf(value));
+                mtFrame.invoke(frame).getClass().getMethod("setText", String.class).invoke(mtFrame.invoke(frame), cast(String.class, value));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private static Object cast(Class desiredType, Object value) {
+        if (desiredType == String.class) {
+            if (value.getClass() == Date.class) {
+                return new SimpleDateFormat("HH.mm").format(value);
+            } else {
+                return String.valueOf(value);
+            }
+        }
+        return value;
     }
 
     /**

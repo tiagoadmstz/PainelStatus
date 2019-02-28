@@ -44,7 +44,7 @@ public final class Listener_PainelGG extends ListenerAdapter<PainelGG> {
     }
 
     private void iniciarMonitoramento() {
-        service.painelPrincipal();
+        service.painelPrincipal().start();
     }
     
 }
