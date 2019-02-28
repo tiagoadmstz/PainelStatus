@@ -13,7 +13,7 @@ import br.com.painel.services.Service_L01ATBOverViewGG;
  *
  * @author tiago.teixeira
  */
-public class Listener_L01ATBOverViewGG extends ListenerAdapter<L01ATBOverViewGG> {
+public final class Listener_L01ATBOverViewGG extends ListenerAdapter<L01ATBOverViewGG> {
 
     private final Service_L01ATBOverViewGG service;
 
@@ -21,14 +21,17 @@ public class Listener_L01ATBOverViewGG extends ListenerAdapter<L01ATBOverViewGG>
         super(form);
         service = new Service_L01ATBOverViewGG(form);
         initComponents();
+        iniciarMonitoramento();
     }
 
     @Override
     protected void attachListeners() {
-        form.getLabelList().forEach(lb -> lb.addMouseListener(service.getMouseListener()));
-        iniciarMonitoramento();
+        form.getJLabelList().forEach(lb -> lb.addMouseListener(service.getMouseListener()));
     }
 
+    /**
+     * Inicia o monitoramento de valores para L03 e L03_Criticos.
+     */
     private void iniciarMonitoramento() {
         service.L03().start();
         service.L03_Criticos().start();

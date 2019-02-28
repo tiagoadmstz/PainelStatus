@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,9 +24,18 @@ public class SQLUtil {
                 return getExecuteQuery(getQueryL03());
             case "L03_Criticos":
                 return getExecuteQuery(getQueryL03_Criticos());
+            case "L09":
             default:
                 return null;
         }
+    }
+
+    public static List<ResultSet> getResultSetPainelPrincipal() {
+        List<ResultSet> rs = new ArrayList();
+        for (String sql : getQuerysPainelPrincipal()) {
+            rs.add(getExecuteQuery(sql));
+        }
+        return rs;
     }
 
     private static ResultSet getExecuteQuery(String query) {
@@ -85,6 +96,14 @@ public class SQLUtil {
                 + "(ExtA_Pressao)as extabar,(ExtB_Pressao)as extbbar,(ExtC_Pressao)as extcbar,(ExtD_Pressao)as extdbar,"
                 + "(Puller1_Velocidade)as puller1velocidadeind,(Puller2_Velocidade)as puller2velocidadeind,(Puller3_Velocidade)as puller3velocidadeind"
                 + " FROM L03_Criticos ORDER BY E3TimeStamp DESC";
+    }
+
+    private static String[] getQuerysPainelPrincipal() {
+        return new String[]{"SELECT TOP 1 (InicioProd) as inicioprodL09,(Status_Da_Linha) as valueL09,(Perfil)as perfilL09, (TotalProdu) as pecatotalL09 FROM L09 ORDER BY E3TimeStamp DESC",
+            "SELECT TOP 1 (ScrapTotal)as scraptotalL09Doc, (FatorScrap) as porcscarpL09Doc FROM L09_Doc ORDER BY E3TimeStamp DESC",
+            "SELECT TOP 1 (Status_Da_Linha) as valueL03,(Perfil) as perfilL03, (DDZ_CompTotal) as pecatotalL03 FROM L03 ORDER BY E3TimeStamp DESC",
+            "SELECT TOP 1 (HInicial) as valueL03Doc, (ScrapTotal) as scraptotalL03Doc, (FatorScrap) as porcscarpL03Doc FROM L03_Doc ORDER BY E3TimeStamp DESC",
+            "SELECT TOP 1 (ExtA_Bar) as valueL11,(ExtB_Bar) as value2L11,(ExtC_Bar) as value3L11,(ExtD_Bar) as value4L11, (Perfil) as perfilL11,(Puller1_IndVelocidade) as velocidadeL11,(HoarioLancamento) as horalancamentoL11, (TotalProduzido) as totalproduzidoL11 FROM L11 ORDER BY E3TimeStamp DESC"};
     }
 
 }

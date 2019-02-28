@@ -671,11 +671,10 @@
                   <Font name="Tahoma" size="11" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Overview"/>
+                <Property name="actionCommand" type="java.lang.String" value="jButton2"/>
                 <Property name="focusable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jButton2" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="457" y="100" width="87" height="20"/>
@@ -729,11 +728,10 @@
                   <Font name="Tahoma" size="11" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Overview"/>
+                <Property name="actionCommand" type="java.lang.String" value="jButton1"/>
                 <Property name="focusable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="1802" y="100" width="87" height="20"/>
@@ -768,11 +766,10 @@
                   <Font name="Tahoma" size="11" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Overview"/>
+                <Property name="actionCommand" type="java.lang.String" value="jButton3"/>
                 <Property name="focusable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jButton3" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="1129" y="100" width="87" height="20"/>
@@ -821,11 +818,10 @@
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Alarmes"/>
+                <Property name="actionCommand" type="java.lang.String" value="jButton4"/>
                 <Property name="focusable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jButton4" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="1802" y="120" width="87" height="20"/>
@@ -844,11 +840,10 @@
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Alarmes"/>
+                <Property name="actionCommand" type="java.lang.String" value="jButton5"/>
                 <Property name="focusable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jButton5" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="457" y="120" width="87" height="20"/>
@@ -864,11 +859,10 @@
                   <Font name="Tahoma" size="11" style="3"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="DDZ"/>
+                <Property name="actionCommand" type="java.lang.String" value="jButton6"/>
                 <Property name="focusable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="jButton6" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="457" y="140" width="87" height="20"/>

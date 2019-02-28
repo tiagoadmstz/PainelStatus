@@ -5,255 +5,153 @@
  */
 package br.com.painel.framesGG;
 
-import br.com.painel.status.L09Alarmes;
-import br.com.painel.status.L09OverView;
-import br.com.painel.status.L01ATBOverView;
-import br.com.painel.status.L11OverView;
-import br.com.painel.status.L09DDZ;
-import br.com.painel.status.L11Alarmes;
-import br.com.painel.util.Auxiliar;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Timer;
-import java.util.TimerTask;
-import javax.swing.JOptionPane;
-import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import br.com.painel.annotations.MapFrame;
+import br.com.painel.entities.PainelPrincipal;
+import br.com.painel.interfaces.ManipulaFrame;
+import br.com.painel.listener.Listener_PainelGG;
+import br.com.painel.util.FrameUtil;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
  * @author rsouza10
  */
-public class PainelGG extends javax.swing.JFrame {
+public final class PainelGG extends ManipulaFrame {
 
+    private static final long serialVersionUID = -6666309417334080833L;
+    private final Listener_PainelGG listener;
 
     public PainelGG() {
+        maximize();
+        setImageIcon();
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
-        start();
-        setIcon();
-        jLabel16.setVisible(false);
-        jLabel17.setVisible(false);
-        lb11Status.setVisible(false);
-        lb11Status1.setVisible(false);
-        lb11Status2.setVisible(false);
-        lb11Status3.setVisible(false);
+        listener = new Listener_PainelGG(this);
+        //start();
     }
-    
-    
-    public void start(){
-        int delay = 1;   // delay de 5 seg.
-        int interval = 5000;  // intervalo de 1 seg.
-        Timer timer = new Timer();
-        /////////////////////////////////////////////////L09
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                try {
-                    Class.forName(Auxiliar.AcessoBanco.getDriver());
-                    Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-                    String query1 = "SELECT TOP 1 (InicioProd) as inicioprod,(Status_Da_Linha) as value,(Perfil)as perfil, (TotalProdu) as pecatotal  FROM L09 ORDER BY E3TimeStamp DESC";
-                    Statement st = con.createStatement();
-                    ResultSet rs = st.executeQuery(query1);
-                    float value = 0f;
-                    String inicioprod = "";
-                    String perfil = "";
-                    Float pecatotal = 0f;
 
-                    while (rs.next()) {
-                        value = rs.getFloat("value");
-                        perfil = rs.getString("perfil");
-                        inicioprod = rs.getString("inicioprod");
-                        perfil = rs.getString("perfil");
-                        pecatotal = rs.getFloat("pecatotal");
-                    }
-                    lb9Status.setText(String.valueOf(value));
-                    jLabel12.setText(perfil);
-                    lb09TotalPro.setText(String.valueOf(pecatotal));
-                    lb09Hora.setText(inicioprod);
+    @Override
+    public List<JLabel> getJLabelList() {
+        return Arrays.asList(jLabel16, jLabel17, lb11Status, lb11Status1, lb11Status2, lb11Status3);
+    }
 
-                } catch (Exception e) {
-//                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, e);
-                }
-                if (!lb9Status.getText().equals("0.0")) {
-                    jLabel16.setVisible(true);
-                    jLabel17.setVisible(false);
-                } else {
-                    jLabel17.setVisible(true);
-                    jLabel16.setVisible(false);
-                }
-            }
+    @Override
+    public List<JButton> getJButtonList() {
+        return Arrays.asList(jButton1, jButton2, jButton3, jButton4, jButton5, jButton6);
+    }
 
-        }, delay, interval);
+    @Override
+    public JLabel[][] getOnOffFields() {
+        return new JLabel[][]{
+            {lb3Status, jLabel18, jLabel19},
+            {lb9Status, jLabel16, jLabel17}
+        };
+    }
 
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                try {
-                    Class.forName(Auxiliar.AcessoBanco.getDriver());
-                    Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-                    String query1 = "SELECT TOP 1 (ScrapTotal)as scraptotal, (FatorScrap)as porcscarp FROM L09_Doc ORDER BY E3TimeStamp DESC";
-                    Statement st = con.createStatement();
-                    ResultSet rs = st.executeQuery(query1);
+    public JLabel[] getLabelVelocidadeAlarme() {
+        return new JLabel[]{jLabel30, jLabel31};
+    }
 
-                    float scraptotal = 0f;
-                    float porcscarp = 0f;
+    public JLabel getLb11Velocidade() {
+        return lb11Velocidade;
+    }
 
-                    while (rs.next()) {
-                        scraptotal = rs.getFloat("scraptotal");
-                        porcscarp = rs.getFloat("porcscarp");
+    @MapFrame(field = "valueL09", target = PainelPrincipal.class)
+    public JLabel getLb9Status() {
+        return lb9Status;
+    }
 
-                    }
-                    lb09ScrapTotal.setText(String.valueOf(scraptotal));
-//                    lb09PorcScrap.setText(String.valueOf(porcscarp + "%"));
-                    lb09PorcScrap.setText(String.format("%.1f", porcscarp) + "%");
-                } catch (Exception e) {
+    @MapFrame(field = "perfilL09", target = PainelPrincipal.class)
+    public JLabel getJLabel12() {
+        return jLabel12;
+    }
 
-                    JOptionPane.showMessageDialog(null, e);
-                }
-            }
+    @MapFrame(field = "pecatotalL09", target = PainelPrincipal.class)
+    public JLabel getLb09TotalPro() {
+        return lb09TotalPro;
+    }
 
-        }, delay, interval);
-        
-        ////////////////////////////////////////// L03
-        jLabel18.setVisible(false);
-        jLabel19.setVisible(false);
+    @MapFrame(field = "inicioprodL09", target = PainelPrincipal.class)
+    public JLabel getLb09Hora() {
+        return lb09Hora;
+    }
 
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                try {
-                    Class.forName(Auxiliar.AcessoBanco.getDriver());
-                    Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-                    String query1 = "SELECT TOP 1 (Status_Da_Linha) as value,(Perfil) as perfil, (DDZ_CompTotal) as pecatotal FROM L03 ORDER BY E3TimeStamp DESC";
-                    Statement st = con.createStatement();
-                    ResultSet rs = st.executeQuery(query1);
-                    float value = 0f;
-                    String perfil = "";
-                    float pecatotal = 0f;
+    @MapFrame(field = "scraptotalL09Doc", target = PainelPrincipal.class)
+    public JLabel getLb09ScrapTotal() {
+        return null;
+    }
 
-                    while (rs.next()) {
-                        value = rs.getFloat("value");
-                        perfil = rs.getString("perfil");
-                        pecatotal = rs.getFloat("pecatotal");
+    @MapFrame(get = "getPorcscarpL09DocStr", target = PainelPrincipal.class)
+    public JLabel getLb09PorcScrap() {
+        return null;
+    }
 
-                    }
-                    lb3Status.setText(String.valueOf(value));
-                    lb03Perfil.setText(perfil);
-                    lb03PecaTotal.setText(String.valueOf(pecatotal));
+    @MapFrame(field = "valueL03", target = PainelPrincipal.class)
+    public JLabel getLb3Status() {
+        return lb3Status;
+    }
 
-                } catch (Exception e) {
+    @MapFrame(field = "perfilL03", target = PainelPrincipal.class)
+    public JLabel getLb03Perfil() {
+        return lb03Perfil;
+    }
 
-                    JOptionPane.showMessageDialog(null, e);
-                }
-                if (!lb3Status.getText().equals("0.0")) {
-                    jLabel18.setVisible(true);
-                    jLabel19.setVisible(false);
-                } else {
-                    jLabel19.setVisible(true);
-                    jLabel18.setVisible(false);
-                }
-            }
+    @MapFrame(field = "pecatotalL03", target = PainelPrincipal.class)
+    public JLabel getLb03PecaTotal() {
+        return lb03PecaTotal;
+    }
 
-        }, delay, interval);
+    @MapFrame(field = "valueL03Doc", target = PainelPrincipal.class)
+    public JLabel getLb03Data() {
+        return lb03Data;
+    }
 
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                try {
-                    Class.forName(Auxiliar.AcessoBanco.getDriver());
-                    Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-                    String query1 = "SELECT TOP 1 (HInicial) as value, (ScrapTotal)as scraptotal, (FatorScrap)as porcscarp  FROM L03_Doc ORDER BY E3TimeStamp DESC";
-                    Statement st = con.createStatement();
-                    ResultSet rs = st.executeQuery(query1);
-                    String value = "";
-                    float scraptotal = 0f;
-                    float porcscarp = 0f;
+    @MapFrame(field = "scraptotalL03Doc", target = PainelPrincipal.class)
+    public JLabel getLb03ScrapTotal() {
+        return lb03ScrapTotal;
+    }
 
-                    while (rs.next()) {
-                        value = rs.getString("value");
-                        scraptotal = rs.getFloat("scraptotal");
-                        porcscarp = rs.getFloat("porcscarp");
+    @MapFrame(get = "getPorcscarpL03DocStr", target = PainelPrincipal.class)
+    public JLabel getLb03PorcScrap() {
+        return lb03PorcScrap;
+    }
 
-                    }
-                    lb03Data.setText(value);
-                    lb03ScrapTotal.setText(String.valueOf(scraptotal));
-                    lb03PorcScrap.setText(String.format("%.1f", porcscarp) + "%");
+    @MapFrame(field = "valueL11", target = PainelPrincipal.class)
+    public JLabel getLb11Status() {
+        return lb11Status;
+    }
 
-                } catch (Exception e) {
+    @MapFrame(field = "value2L11", target = PainelPrincipal.class)
+    public JLabel getLb11Status1() {
+        return lb11Status1;
+    }
 
-                    JOptionPane.showMessageDialog(null, e);
-                }
-            }
+    @MapFrame(field = "value3L11", target = PainelPrincipal.class)
+    public JLabel getLb11Status2() {
+        return lb11Status2;
+    }
 
-        }, delay, interval);
+    @MapFrame(field = "value4L11", target = PainelPrincipal.class)
+    public JLabel getLb11Status3() {
+        return lb11Status3;
+    }
 
-        /////////////////////////////////////////////////////////////////////////////// L11
-        jLabel30.setVisible(false);
-        jLabel31.setVisible(false);
+    @MapFrame(field = "perfilL11", target = PainelPrincipal.class)
+    public JLabel getLb11Perfil() {
+        return lb11Perfil;
+    }
 
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                try {
-                    Class.forName(Auxiliar.AcessoBanco.getDriver());
-                    Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-                    String query1 = "SELECT TOP 1 (ExtA_Bar) as value,(ExtB_Bar)as value2,(ExtC_Bar)as value3,(ExtD_Bar)as value4, (Perfil)as perfil,(Puller1_IndVelocidade)as velocidade,(HoarioLancamento)as horalancamento, (TotalProduzido)as totalproduzido FROM L11 ORDER BY E3TimeStamp DESC";
+    @MapFrame(field = "horalancamentoL11", target = PainelPrincipal.class)
+    public JLabel getLb11Lancamento() {
+        return lb11Lancamento;
+    }
 
-                    Statement st = con.createStatement();
-                    ResultSet rs = st.executeQuery(query1);
-                    float value = 0f;
-                    float value2 = 0f;
-                    float value3 = 0f;
-                    float value4 = 0f;
-                    String perfil = "";
-                    float velocidade = 0f;
-                    float totalproduzido = 0f;
-
-                    String horalancamento = "";
-
-                    while (rs.next()) {
-                        value = rs.getFloat("value");
-                        value2 = rs.getFloat("value2");
-                        value3 = rs.getFloat("value3");
-                        value4 = rs.getFloat("value4");
-                        perfil = rs.getString("perfil");
-                        velocidade = rs.getFloat("velocidade");
-                        horalancamento = rs.getString("horalancamento");
-                        totalproduzido = rs.getFloat("totalproduzido");
-
-                    }
-                    lb11Status.setText(String.valueOf(value));
-                    lb11Status1.setText(String.valueOf(value2));
-                    lb11Status2.setText(String.valueOf(value3));
-                    lb11Status3.setText(String.valueOf(value4));
-                    lb11Perfil.setText(perfil);
-                    lb11Lancamento.setText(horalancamento);
-                    lb11Velocidade1.setText(String.valueOf(totalproduzido));
-                    double lb = Double.parseDouble(lb11Status.getText());
-                    double lb1 = Double.parseDouble(lb11Status1.getText());
-                    double lb2 = Double.parseDouble(lb11Status2.getText());
-                    double lb3 = Double.parseDouble(lb11Status3.getText());
-                    if (lb > 10 || lb1 > 10 || lb2 > 10 || lb3 > 10) {
-                        lb11Velocidade.setText(String.valueOf(velocidade));
-                        jLabel30.setVisible(true);
-                        jLabel31.setVisible(false);
-                    } else {
-                        lb11Velocidade.setText(String.valueOf("0.0"));
-                        jLabel31.setVisible(true);
-                        jLabel30.setVisible(false);
-                    }
-                } catch (Exception e) {
-//                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, e);
-                }
-
-            }
-
-        }, delay, interval);
-        }
+    @MapFrame(field = "totalproduzidoL11", target = PainelPrincipal.class)
+    public JLabel getLb11Velocidade1() {
+        return lb11Velocidade1;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -502,12 +400,9 @@ public class PainelGG extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(191, 236, 247));
         jButton2.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jButton2.setText("Overview");
+        jButton2.setActionCommand("jButton2");
         jButton2.setFocusable(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.setName("jButton2"); // NOI18N
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 100, 87, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -529,12 +424,9 @@ public class PainelGG extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(191, 236, 247));
         jButton1.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jButton1.setText("Overview");
+        jButton1.setActionCommand("jButton1");
         jButton1.setFocusable(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.setName("jButton1"); // NOI18N
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1802, 100, 87, 20));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -548,12 +440,9 @@ public class PainelGG extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(191, 236, 247));
         jButton3.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jButton3.setText("Overview");
+        jButton3.setActionCommand("jButton3");
         jButton3.setFocusable(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        jButton3.setName("jButton3"); // NOI18N
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1129, 100, 87, 20));
 
         lb11Lancamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -568,35 +457,26 @@ public class PainelGG extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 0, 0));
         jButton4.setText("Alarmes");
+        jButton4.setActionCommand("jButton4");
         jButton4.setFocusable(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        jButton4.setName("jButton4"); // NOI18N
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1802, 120, 87, 20));
 
         jButton5.setBackground(new java.awt.Color(191, 236, 247));
         jButton5.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 0, 0));
         jButton5.setText("Alarmes");
+        jButton5.setActionCommand("jButton5");
         jButton5.setFocusable(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
+        jButton5.setName("jButton5"); // NOI18N
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 120, 87, 20));
 
         jButton6.setBackground(new java.awt.Color(191, 236, 247));
         jButton6.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jButton6.setText("DDZ");
+        jButton6.setActionCommand("jButton6");
         jButton6.setFocusable(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
+        jButton6.setName("jButton6"); // NOI18N
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 140, 87, 20));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/painel/img/InicialNoteGG.PNG"))); // NOI18N
@@ -619,115 +499,12 @@ public class PainelGG extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Dimension resolucao = Toolkit.getDefaultToolkit().getScreenSize();
-        if (resolucao.equals(new Dimension(1280, 1024))) {
-            L11OverView frame = new L11OverView();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else if (resolucao.equals(new Dimension(800, 600))) {
-            L11OverView frame = new L11OverView();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else if (resolucao.equals(new Dimension(1920, 1080))) {
-            L11OverViewGG frame = new L11OverViewGG();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else {
-            L11OverViewGG frame = new L11OverViewGG();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        }
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Dimension resolucao = Toolkit.getDefaultToolkit().getScreenSize();
-        if (resolucao.equals(new Dimension(1280, 1024))) {
-            L09OverView frame = new L09OverView();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else if (resolucao.equals(new Dimension(800, 600))) {
-            L09OverView frame = new L09OverView();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else if (resolucao.equals(new Dimension(1920, 1080))) {
-            L09OverViewGG frame = new L09OverViewGG();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else {
-            L09OverViewGG frame = new L09OverViewGG();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        Dimension resolucao = Toolkit.getDefaultToolkit().getScreenSize();
-        if (resolucao.equals(new Dimension(1280, 1024))) {
-            L01ATBOverView frame = new L01ATBOverView();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else if (resolucao.equals(new Dimension(800, 600))) {
-            L01ATBOverView frame = new L01ATBOverView();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else if (resolucao.equals(new Dimension(1920, 1080))) {
-            L01ATBOverViewGG frame = new L01ATBOverViewGG();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        } else {
-            L01ATBOverViewGG frame = new L01ATBOverViewGG();
-            frame.setSize(resolucao);
-            frame.setVisible(true);
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        L11Alarmes t = new L11Alarmes();
-        t.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        L09Alarmes t = new L09Alarmes();
-        t.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        new L09DDZ().setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                //começa o look aqui
-                LookAndFeel lf = UIManager.getLookAndFeel();
-
-                try {
-
-                    for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                        if ("Nimbus".equals(info.getName())) {
-                            UIManager.setLookAndFeel(info.getClassName());
-                            break;
-                        }
-                    }
-
-                } catch (UnsupportedLookAndFeelException exc) {
-                } catch (ClassNotFoundException exc) {
-                } catch (InstantiationException exc) {
-                } catch (IllegalAccessException exc) {
-                }
-
-                UIManager.put("nimbusBase", new Color(238, 232, 170));
-
-                UIManager.put("nimbusBlueGrey", new Color(240, 255, 240));
-
-                UIManager.put("control", new Color(220, 220, 220));
-                //temina o look aqui
+                FrameUtil.setNimbusLookAndFeel();
                 new PainelGG().setVisible(true);
             }
         });
@@ -795,7 +572,5 @@ public class PainelGG extends javax.swing.JFrame {
     private javax.swing.JLabel lb3Status;
     private javax.swing.JLabel lb9Status;
     // End of variables declaration//GEN-END:variables
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/painel/img/iconprincipal.png")));
-    }
+
 }

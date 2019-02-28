@@ -8,18 +8,17 @@ package br.com.painel.framesGG;
 import br.com.painel.annotations.MapFrame;
 import br.com.painel.entities.L03;
 import br.com.painel.entities.L03_Criticos;
+import br.com.painel.interfaces.ManipulaFrame;
 import br.com.painel.listener.Listener_L01ATBOverViewGG;
-import br.com.painel.util.FrameUtil;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 /**
  *
  * @author rsouza10
  */
-public final class L01ATBOverViewGG extends javax.swing.JFrame {
+public final class L01ATBOverViewGG extends ManipulaFrame {
 
     private static final long serialVersionUID = -2417909134083994977L;
     private final Listener_L01ATBOverViewGG listener;
@@ -28,12 +27,13 @@ public final class L01ATBOverViewGG extends javax.swing.JFrame {
      * Creates new form L09OuverView
      */
     public L01ATBOverViewGG() {
-        setExtendedState(MAXIMIZED_BOTH);
+        maximize();
         initComponents();
         listener = new Listener_L01ATBOverViewGG(this);
     }
 
-    public List<JLabel> getLabelList() {
+    @Override
+    public List<JLabel> getJLabelList() {
         return Arrays.asList(jLabel68, jLabel69, jLabel70, jLabel71, jLabel72, jLabel73, jLabel74, jLabel75, jLabel76);
     }
 
@@ -417,8 +417,9 @@ public final class L01ATBOverViewGG extends javax.swing.JFrame {
         return lbPuller3VelocidadeInd;
     }
 
+    @Override
     public JLabel[][] getOnOffFields() {
-        JLabel[][] labels = {
+        return new JLabel[][]{
             {lbaBanheira1BombaChillerON, lbBanheira1BombaChillerOF},
             {lbaBanheira1BombaTanque, lbBanheira1BombaTanqueON, lbBanheira1BombaTanqueOf},
             {lbaBanheira2BombaChiller, lbBanheira2BombaChillerON, lbBanheira2BombaChillerOF},
@@ -431,7 +432,6 @@ public final class L01ATBOverViewGG extends javax.swing.JFrame {
             {lbExaustor, lbExaustorON, lbExaustorOF},
             {lbVentilador, lbVentiladorON, lbVentiladorOF}
         };
-        return labels;
     }
 
     @SuppressWarnings("unchecked")

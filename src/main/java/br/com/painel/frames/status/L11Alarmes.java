@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.painel.status;
+package br.com.painel.frames.status;
 
 import br.com.painel.util.Auxiliar;
 import br.com.painel.util.EstiloTablaHeader;

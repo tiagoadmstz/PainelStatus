@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.painel.status;
+package br.com.painel.frames.status;
 
 import br.com.painel.util.Auxiliar;
 import java.sql.Connection;
@@ -18,12 +18,12 @@ import javax.swing.JOptionPane;
  *
  * @author rsouza10
  */
-public class L01ATBExtrusoraA extends javax.swing.JFrame {
+public class L11ExtrusoraD extends javax.swing.JFrame {
 
     /**
      * Creates new form L11Extrusora
      */
-    public L01ATBExtrusoraA() {
+    public L11ExtrusoraD() {
         initComponents();
         lbperfil.setVisible(false);
         int delay = 1;   // delay de 5 seg.
@@ -40,10 +40,12 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
                 try {
                     Class.forName(Auxiliar.AcessoBanco.getDriver());
                     Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-                    String query1 = "SELECT TOP 1 (ExtA_IndInv1)as inv1ind,(ExtA_SetInv1)as inv1set, (Perfil)as perfil,"
-                            + "(ExtA_IndInv2)as inv2ind, (ExtA_SetInv2)as inv2set,"
-                            + "(ExtA_IndParafuso)as parafusoind,(ExtA_SetParafuso)as parafusoset,"
-                            + "(ExtA_IndFlange)as extafalngeind,(ExtA_SetFlange)as extafalngeset FROM L03 ORDER BY E3TimeStamp DESC";
+                    String query1 = "SELECT TOP 1 (ExtD_IndInv1)as inv1ind,(ExtD_SetInv1)as inv1set, (Perfil)as perfil,"
+                            + "(ExtD_IndInv2)as inv2ind, (ExtD_SetInv2)as inv2set,"
+                            + "(ExtD_IndParafuso)as parafusoind,(ExtD_SetParafuso)as parafusoset,"
+                            + "(ExtD_IndFlange)as extafalngeind,(ExtD_SetFlange)as extafalngeset,"
+                            + "(ExtD_IndInv3)AS inv3ind,(ExtD_SetInv3)AS inv3set,"
+                            + "(ExtD_Amp) as extamp,(ExtD_Bar) as extbar,(ExtD_IndRpm) as extindrpm FROM L11 ORDER BY E3TimeStamp DESC";
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery(query1);
                     float inv1ind = 0f;
@@ -55,6 +57,8 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
                     float inv2set = 0f;
                     float extafalngeind = 0f;
                     float extafalngeset = 0f;
+                    float inv3ind = 0f;
+                    float inv3set = 0f;
 
                     while (rs.next()) {
                         inv1ind = rs.getFloat("inv1ind");
@@ -66,6 +70,8 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
                         parafusoset = rs.getFloat("parafusoset");
                         extafalngeind = rs.getFloat("extafalngeind");
                         extafalngeset = rs.getFloat("extafalngeset");
+                        inv3ind = rs.getFloat("inv3ind");
+                        inv3set = rs.getFloat("inv3set");
 
                     }
                     lbInv1Real.setText(String.valueOf(inv1ind));
@@ -77,6 +83,8 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
                     lbParafReal.setText(String.valueOf(parafusoind));
                     lbFlangeSet.setText(String.valueOf(extafalngeset));
                     lbFlangeReal.setText(String.valueOf(extafalngeind));
+                    lbInv3Real.setText(String.valueOf(inv3ind));
+                    lbInv3Set.setText(String.valueOf(inv3set));
 
                 } catch (Exception e) {
 //                    e.printStackTrace();
@@ -85,16 +93,14 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
             }
 
         }, delay, interval);
-        
-        
 
-        /////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////
         timer1.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 try {
                     Class.forName(Auxiliar.AcessoBanco.getDriver());
                     Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-                    String query1 = "SELECT TOP 1 (ExtA_Corrente) as extamp,(ExtA_Pressao) as extbar,(ExtA_Rotacao) as extindrpm FROM L03_Criticos ORDER BY E3TimeStamp DESC";
+                    String query1 = "SELECT TOP 1 (ExtD_Corrente) as extamp,(ExtD_Pressao) as extbar,(ExtD_RPM) as extindrpm FROM L11_Criticos ORDER BY E3TimeStamp DESC";
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery(query1);
                     float extamp = 0f;
@@ -124,7 +130,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT TOP 1 (ExtA_IndInv1)as inv1ind,(ExtA_SetInv1)as inv1set FROM L03 ORDER BY E3TimeStamp DESC";
+            String query1 = "SELECT TOP 1 (ExtA_IndInv1)as inv1ind,(ExtA_SetInv1)as inv1set FROM L11 ORDER BY E3TimeStamp DESC";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
             float inv1ind = 0f;
@@ -147,7 +153,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID, (Value) as valor1 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE TemplateID = '13'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID, (Value) as valor1 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE TemplateID = '16'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
             float valor1 = 0f;
@@ -166,7 +172,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '14'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '20'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -187,7 +193,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '9'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '12'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -208,7 +214,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '5'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '8'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -225,11 +231,12 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, e);
         }
-        /////////////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '36'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '39'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -458,6 +465,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
 
         lbRotacaoReceita.setForeground(new java.awt.Color(102, 255, 102));
         lbRotacaoReceita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbRotacaoReceita.setText("Null");
         jPanel1.add(lbRotacaoReceita, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 382, 50, 20));
 
         lbCorrente.setForeground(new java.awt.Color(0, 255, 255));
@@ -497,7 +505,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
 
         jLabel46.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel46.setText("A");
+        jLabel46.setText("D");
         jPanel1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 6, 37, 25));
 
         jLabel47.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -545,14 +553,22 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(L01ATBExtrusoraA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L11ExtrusoraD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(L01ATBExtrusoraA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L11ExtrusoraD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(L01ATBExtrusoraA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L11ExtrusoraD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(L01ATBExtrusoraA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L11ExtrusoraD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -565,7 +581,7 @@ public class L01ATBExtrusoraA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new L01ATBExtrusoraA().setVisible(true);
+                new L11ExtrusoraD().setVisible(true);
             }
         });
     }

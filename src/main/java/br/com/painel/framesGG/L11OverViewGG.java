@@ -5,11 +5,11 @@
  */
 package br.com.painel.framesGG;
 
-import br.com.painel.status.L11ExtrusoraA;
-import br.com.painel.status.L11ExtrusoraB;
-import br.com.painel.status.L11Microondas;
-import br.com.painel.status.L11ExtrusoraC;
-import br.com.painel.status.L11ExtrusoraD;
+import br.com.painel.frames.status.L11ExtrusoraA;
+import br.com.painel.frames.status.L11ExtrusoraB;
+import br.com.painel.frames.status.L11Microondas;
+import br.com.painel.frames.status.L11ExtrusoraC;
+import br.com.painel.frames.status.L11ExtrusoraD;
 import br.com.painel.util.Auxiliar;
 import java.sql.Connection;
 import java.sql.DriverManager;

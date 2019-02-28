@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.painel.status;
+package br.com.painel.frames.status;
 
 import br.com.painel.util.Auxiliar;
 import java.sql.Connection;
@@ -18,12 +18,12 @@ import javax.swing.JOptionPane;
  *
  * @author rsouza10
  */
-public class L11Microondas extends javax.swing.JFrame {
+public class L01ATBMicroondas extends javax.swing.JFrame {
 
     /**
      * Creates new form L11Microondas
      */
-    public L11Microondas() {
+    public L01ATBMicroondas() {
         initComponents();
         jLabel2.setVisible(false);
         jLabel68.setVisible(false);
@@ -50,7 +50,7 @@ public class L11Microondas extends javax.swing.JFrame {
                             + "(Microondas_TapeteEntrada_Set) as tapeteentradaset,(Microondas_TapeteEntrada_Ind) as tapeteentradaind,"
                             + "(Microondas_Rolos_Ind) as rolosind, (Microondas_Tapete_Ind) as tapeteind,"
                             + "(Perfil)as perfil"
-                            + " FROM L11 ORDER BY E3TimeStamp DESC";
+                            + " FROM L03 ORDER BY E3TimeStamp DESC";
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery(query1);
                     float uhf1ind = 0f;
@@ -161,7 +161,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '76'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '76'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -183,7 +183,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '77'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '77'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -205,7 +205,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '78'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '78'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -227,7 +227,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '79'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '79'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -249,7 +249,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '82'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '82'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -271,7 +271,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '81'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '81'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -293,7 +293,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '80'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '80'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -315,7 +315,7 @@ public class L11Microondas extends javax.swing.JFrame {
         try {
             Class.forName(Auxiliar.AcessoBanco.getDriver());
             Connection con = DriverManager.getConnection(Auxiliar.AcessoBanco.getUrl(), Auxiliar.AcessoBanco.getUser(), Auxiliar.AcessoBanco.getPass());
-            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita_ValueData WHERE ValueID = (SELECT ValueID FROM Receita_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '83'";
+            String query1 = "SELECT * FROM(SELECT ValueID, TemplateID,(Value) as valor2 FROM Receita03_ValueData WHERE ValueID = (SELECT ValueID FROM Receita03_ValueData WHERE Value = '" + lbperfil.getText() + "')) RECEITA WHERE  TemplateID = '83'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1);
 
@@ -781,20 +781,21 @@ public class L11Microondas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(L11Microondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L01ATBMicroondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(L11Microondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L01ATBMicroondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(L11Microondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L01ATBMicroondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(L11Microondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(L01ATBMicroondas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new L11Microondas().setVisible(true);
+                new L01ATBMicroondas().setVisible(true);
             }
         });
     }

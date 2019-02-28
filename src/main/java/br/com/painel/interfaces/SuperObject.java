@@ -7,6 +7,8 @@ package br.com.painel.interfaces;
 
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -21,10 +23,21 @@ public abstract class SuperObject {
                 for (Field field : fields) {
                     field.setAccessible(true);
                     if (!field.getName().equals("serialVersionUID")) {
-                        field.set(this, rst.getObject(field.getName()));
+                        try {
+                            field.set(this, rst.getObject(field.getName()));
+                        } catch (SQLException sqlEx) {
+                        }
                     }
                 }
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void setValuesByResultSet(List<ResultSet> rstList) {
+        try {
+            rstList.forEach(rst -> setValuesByResultSet(rst));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

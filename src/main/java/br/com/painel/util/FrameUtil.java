@@ -6,16 +6,30 @@
 package br.com.painel.util;
 
 import br.com.painel.annotations.MapFrame;
-import br.com.painel.status.L01ATBExtrusoraA;
-import br.com.painel.status.L01ATBExtrusoraB;
-import br.com.painel.status.L01ATBExtrusoraC;
-import br.com.painel.status.L01ATBExtrusoraD;
-import br.com.painel.status.L11Microondas;
+import br.com.painel.enumerated.LOOKANDFEEL;
+import br.com.painel.frames.status.L01ATBExtrusoraA;
+import br.com.painel.frames.status.L01ATBExtrusoraB;
+import br.com.painel.frames.status.L01ATBExtrusoraC;
+import br.com.painel.frames.status.L01ATBExtrusoraD;
+import br.com.painel.frames.status.L01ATBOverView;
+import br.com.painel.frames.status.L09Alarmes;
+import br.com.painel.frames.status.L09DDZ;
+import br.com.painel.frames.status.L09OverView;
+import br.com.painel.frames.status.L11Alarmes;
+import br.com.painel.frames.status.L11Microondas;
+import br.com.painel.frames.status.L11OverView;
+import br.com.painel.framesGG.L01ATBOverViewGG;
+import br.com.painel.framesGG.L09OverViewGG;
+import br.com.painel.framesGG.L11OverViewGG;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -24,40 +38,81 @@ import javax.swing.JLabel;
 public class FrameUtil {
 
     /**
-     * Abre um frame pelo nome.
+     * Abre um frame pelo nome do label.
      *
-     * @param name
+     * @param label
      */
-    public static void openFrame(String name) {
-        switch (name) {
-            case "jLabel68":
-                new L01ATBExtrusoraB().setVisible(true);
-                break;
+    public static void openFrame(JLabel label) {
+        switch (label.getName()) {
             case "jLabel69":
-                new L01ATBExtrusoraA().setVisible(true);
+                openFrame(L01ATBExtrusoraA.class, null);
                 break;
+            case "jLabel68":
             case "jLabel70":
-                new L01ATBExtrusoraB().setVisible(true);
-                break;
             case "jLabel71":
-                new L01ATBExtrusoraB().setVisible(true);
-                break;
-            case " jLabel72":
-                new L01ATBExtrusoraD().setVisible(true);
+                openFrame(L01ATBExtrusoraB.class, null);
                 break;
             case "jLabel73":
-                new L01ATBExtrusoraC().setVisible(true);
-                break;
             case "jLabel74":
-                new L01ATBExtrusoraC().setVisible(true);
-                break;
             case "jLabel75":
-                new L01ATBExtrusoraC().setVisible(true);
+                openFrame(L01ATBExtrusoraC.class, null);
+                break;
+            case " jLabel72":
+                openFrame(L01ATBExtrusoraD.class, null);
                 break;
             case "jLabel76":
-                new L11Microondas().setVisible(true);
+                openFrame(L11Microondas.class, null);
                 break;
         }
+    }
+
+    public static void openFrame(JButton button) {
+        Dimension dms = Utilidades.getResolutionScreen();
+        switch (button.getActionCommand()) {
+            case "jButton1":
+                openFrame(isSmallScreen(dms) ? L01ATBOverView.class : L01ATBOverViewGG.class, dms);
+                break;
+            case "jButton2":
+                openFrame(isSmallScreen(dms) ? L09OverView.class : L09OverViewGG.class, dms);
+                break;
+            case "jButton3":
+                openFrame(isSmallScreen(dms) ? L11OverView.class : L11OverViewGG.class, dms);
+                break;
+            case "jButton4":
+                openFrame(L11Alarmes.class, null);
+                break;
+            case "jButton5":
+                openFrame(L09Alarmes.class, null);
+                break;
+            case "jButton6":
+                openFrame(L09DDZ.class, null);
+                break;
+        }
+    }
+
+    public static void openFrame(Class classFrame, Dimension dimension) {
+        try {
+            initFrame((JFrame) classFrame.getConstructor().newInstance(), dimension);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static boolean isSmallScreen(Dimension dimensionScreen) {
+        if ((dimensionScreen.width == 800 && dimensionScreen.height == 600)
+                || (dimensionScreen.width == 1280 && dimensionScreen.height == 1024)) {
+            return true;
+        } else if (dimensionScreen.width == 1920 && dimensionScreen.height == 1080) {
+            return false;
+        }
+        return false;
+    }
+
+    private static void initFrame(JFrame frame, Dimension dimension) {
+        if (dimension != null) {
+            frame.setSize(dimension);
+        }
+        frame.setVisible(true);
     }
 
     /**
@@ -163,6 +218,16 @@ public class FrameUtil {
     public static void toogleVisible(JComponent... components) {
         for (JComponent comp : components) {
             comp.setVisible(!comp.isVisible());
+        }
+    }
+
+    public static void setNimbusLookAndFeel() {
+        try {
+            UIManager.setLookAndFeel(LOOKANDFEEL.NIMBUS.getValor());
+            UIManager.put("nimbusBase", new Color(238, 232, 170));
+            UIManager.put("nimbusBlueGrey", new Color(240, 255, 240));
+            UIManager.put("control", new Color(220, 220, 220));
+        } catch (Exception ex) {
         }
     }
 
