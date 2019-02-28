@@ -29,7 +29,6 @@ public final class PainelGG extends ManipulaFrame {
         setImageIcon();
         initComponents();
         listener = new Listener_PainelGG(this);
-        //start();
     }
 
     @Override
@@ -500,9 +499,7 @@ public final class PainelGG extends ManipulaFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
-
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             public void run() {
                 FrameUtil.setNimbusLookAndFeel();
                 new PainelGG().setVisible(true);

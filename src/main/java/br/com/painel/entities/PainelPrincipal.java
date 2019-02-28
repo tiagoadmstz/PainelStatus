@@ -14,14 +14,6 @@ import java.util.Date;
  */
 public class PainelPrincipal extends SuperObject {
 
-    //L09
-    private int valueL09;
-    private Date inicioprodL09;
-    private String perfilL09;
-    private int pecatotalL09;
-    //L09_Doc
-    private double scraptotalL09Doc;
-    private double porcscarpL09Doc;
     //L03
     private int valueL03;
     private String perfilL03;
@@ -30,6 +22,14 @@ public class PainelPrincipal extends SuperObject {
     private Date valueL03Doc;
     private double scraptotalL03Doc;
     private double porcscarpL03Doc;
+    //L09
+    private int valueL09;
+    private Date inicioprodL09;
+    private String perfilL09;
+    private int pecatotalL09;
+    //L09_Doc
+    private double scraptotalL09Doc;
+    private double porcscarpL09Doc;
     //L11
     private double valueL11;
     private double value2L11;
@@ -40,10 +40,6 @@ public class PainelPrincipal extends SuperObject {
     private int velocidadeL11;
     private int totalproduzidoL11;
 
-    /**
-     * Coluna Banco	Tipo	Tipo de Dados BD	Tabela HoarioLancamento	TimeStamp
-     * datetime	L11
-     */
     public PainelPrincipal() {
         valueL09 = 0;
         inicioprodL09 = null;
@@ -65,7 +61,7 @@ public class PainelPrincipal extends SuperObject {
         velocidadeL11 = 0;
         totalproduzidoL11 = 0;
     }
-
+    
     public String getPorcscarpL09DocStr() {
         return String.format("%.1f", porcscarpL09Doc) + "%";
     }
@@ -74,7 +70,7 @@ public class PainelPrincipal extends SuperObject {
         return String.format("%.1f", porcscarpL03Doc) + "%";
     }
 
-    public boolean isAlarmeVelecidade() {
+    public boolean isAlarmeVelocidade() {
         return valueL11 > 10 || value2L11 > 10 || value3L11 > 10 || value4L11 > 10;
     }
 

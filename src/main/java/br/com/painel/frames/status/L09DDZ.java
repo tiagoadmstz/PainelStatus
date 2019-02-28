@@ -6,8 +6,8 @@
 package br.com.painel.frames.status;
 
 import br.com.painel.util.Auxiliar;
-import br.com.painel.util.EstiloTablaRenderer;
-import br.com.painel.util.HeaderRenderer;
+import br.com.painel.renderers.EstiloTablaRenderer;
+import br.com.painel.renderers.HeaderRenderer;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.Connection;

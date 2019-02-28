@@ -72,13 +72,13 @@ public class FrameUtil {
         Dimension dms = Utilidades.getResolutionScreen();
         switch (button.getActionCommand()) {
             case "jButton1":
-                openFrame(isSmallScreen(dms) ? L01ATBOverView.class : L01ATBOverViewGG.class, dms);
+                openFrame(isSmallScreen(dms) ? L11OverView.class : L11OverViewGG.class, dms);
                 break;
             case "jButton2":
                 openFrame(isSmallScreen(dms) ? L09OverView.class : L09OverViewGG.class, dms);
                 break;
             case "jButton3":
-                openFrame(isSmallScreen(dms) ? L11OverView.class : L11OverViewGG.class, dms);
+                openFrame(isSmallScreen(dms) ? L01ATBOverView.class : L01ATBOverViewGG.class, dms);
                 break;
             case "jButton4":
                 openFrame(L11Alarmes.class, null);
