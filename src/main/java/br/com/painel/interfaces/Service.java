@@ -5,9 +5,14 @@
  */
 package br.com.painel.interfaces;
 
+import br.com.painel.util.ControleThreads;
 import br.com.painel.util.FrameUtil;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,9 +25,11 @@ import javax.swing.JLabel;
 public abstract class Service<T> {
 
     protected final T form;
+    protected final List<String> threads;
 
     public Service(T form) {
         this.form = form;
+        threads = new ArrayList();
     }
 
     /**
@@ -90,4 +97,24 @@ public abstract class Service<T> {
             }
         };
     }
+
+    public WindowAdapter getServiceStopControl() {
+        return new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                stopAllServices(getServicesNames());
+            }
+        };
+    }
+
+    private void stopAllServices(String... threadsNames) {
+        for (String thread : threadsNames) {
+            ControleThreads.removeThead(thread);
+        }
+    }
+
+    private String[] getServicesNames() {
+        return threads.toArray(new String[threads.size()]);
+    }
+
 }

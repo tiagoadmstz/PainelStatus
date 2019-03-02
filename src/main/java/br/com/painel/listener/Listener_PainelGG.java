@@ -8,6 +8,7 @@ package br.com.painel.listener;
 import br.com.painel.framesGG.PainelGG;
 import br.com.painel.interfaces.ListenerAdapter;
 import br.com.painel.services.Service_PainelGG;
+import br.com.painel.util.ControleThreads;
 import br.com.painel.util.FrameUtil;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
@@ -37,6 +38,7 @@ public final class Listener_PainelGG extends ListenerAdapter<PainelGG> {
     @Override
     protected void attachListeners() {
         form.getJButtonList().forEach(bt -> bt.addActionListener(this));
+        form.addWindowListener(service.getServiceStopControl());
     }
 
     @Override
@@ -45,7 +47,7 @@ public final class Listener_PainelGG extends ListenerAdapter<PainelGG> {
     }
 
     private void iniciarMonitoramento() {
-        service.painelPrincipal().start();
+        ControleThreads.autoInitThread(service.painelPrincipal());
     }
 
 }

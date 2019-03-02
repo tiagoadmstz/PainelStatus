@@ -28,6 +28,7 @@ public class Service_L01ATBOverViewGG extends Service<L01ATBOverViewGG> {
      * @return Thread com o processo de monitoramento
      */
     public synchronized Thread L03() {
+        threads.add("L03");
         return new Thread(new Runnable() {
             @Override
             public void run() {
@@ -44,7 +45,7 @@ public class Service_L01ATBOverViewGG extends Service<L01ATBOverViewGG> {
                     ex.printStackTrace();
                 }
             }
-        });
+        }, "L03");
     }
 
     /**
@@ -54,6 +55,7 @@ public class Service_L01ATBOverViewGG extends Service<L01ATBOverViewGG> {
      * @return Thread com o processo de monitoramento
      */
     public synchronized Thread L03_Criticos() {
+        threads.add("L03_Criticos");
         return new Thread(new Runnable() {
             @Override
             public void run() {
@@ -69,7 +71,7 @@ public class Service_L01ATBOverViewGG extends Service<L01ATBOverViewGG> {
                     ex.printStackTrace();
                 }
             }
-        });
+        }, "L03_Criticos");
     }
 
 }

@@ -23,6 +23,7 @@ public final class Service_L09OverViewGG extends Service<L09OverViewGG> {
     }
 
     public Thread L09() {
+        threads.add("L09");
         return new Thread(new Runnable() {
             @Override
             public void run() {
@@ -37,10 +38,11 @@ public final class Service_L09OverViewGG extends Service<L09OverViewGG> {
                     ex.printStackTrace();
                 }
             }
-        });
+        }, "L09");
     }
 
     public Thread L09_Criticos() {
+        threads.add("L09_Criticos");
         return new Thread(new Runnable() {
             @Override
             public void run() {
@@ -54,7 +56,7 @@ public final class Service_L09OverViewGG extends Service<L09OverViewGG> {
                     ex.printStackTrace();
                 }
             }
-        });
+        }, "L09_Criticos");
     }
 
 }

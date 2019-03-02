@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class SQLUtil {
 
-    public static int L03 = 0, L03_CRITICOS = 1, L09 = 2, L09_CRITICOS = 3;
+    public static int L03 = 0, L03_CRITICOS = 1, L09 = 2, L09_CRITICOS = 3, L11 = 4, L11_CRITICOS = 5, L11_ALARMES = 6;
 
     public static ResultSet getResultSet(int query) {
         switch (query) {
@@ -30,6 +30,12 @@ public class SQLUtil {
                 return getExecuteQuery(getQueryL09());
             case 3:
                 return getExecuteQuery(getQueryL09_Criticos());
+            case 4:
+                return getExecuteQuery(getQueryL11());
+            case 5:
+                return getExecuteQuery(getQueryL11_Criticos());
+            case 6:
+                return getExecuteQuery(getQueryL11_Alarmes());
             default:
                 return null;
         }
@@ -137,6 +143,61 @@ public class SQLUtil {
         return "SELECT TOP 1 (ExtA_RPM)as extarpm,(ExtB_RPM)as extbrpm,(ExtC_RPM)as extcrpm,(ExtD_RPM)as extdrpm,"
                 + "(ExtA_Pressao)as extabar,(ExtB_Pressao)as extbbar,(ExtC_Pressao)as extcbar,(ExtD_Pressao)as extdbar,"
                 + "(Puller_Velocidade)as puller1velocidadeind FROM L09_Criticos ORDER BY E3TimeStamp DESC";
+    }
+
+    private static String getQueryL11() {
+        return "SELECT TOP 1 (Microondas_EsqPCT_Ind) as micropctind, (Microondas_EsqPCT_Set) as micropctset,"
+                + "(Microondas_Esq1_Ind)as microesqind,(Microondas_Esq1_Set)as microesqset,"
+                + "(Microondas_TapeteEntrada_Ind)as microesteiraind,(Microondas_TapeteEntrada_Set)as microesteiraset,"
+                + "(Microondas_Exaustao_Ind)as microexaustorind, (Microondas_Exaustao_Set)as microexaustorset,"
+                + "(Microondas_ArRefrigerado_Ind)as microrefrigeradoind,(Microondas_ArRefrigerado_Set)as microrefrigeradoset,"
+                + "(Vulc1_IndTempControle1)as vulc1queimadorind,(Vulc1_SetTempControle1)as vulc1queimadorset,"
+                + "(Vulc1_IndTempControle2)as vulc1queimador2ind,(Vulc1_SetTempControle2)as vulc1queimador2set,"
+                + "(Vulc1_IndEsteira)as vulc1esteiraind,(Vulc1_SetEsteira)as vulc1esteiraset,"
+                + "(Puller1_IndVelocidade)as puller1velocidadeind,(Puller1_SetVelocidade)as puller1velocidadeset,"
+                + "(Puller2_IndVelocidade)as puller2velocidadeind,(Puller2_SetVelocidade)as puller2velocidadeset,"
+                + "(Puller3_IndVelocidade)as puller3velocidadeind,(Puller3_SetVelocidade)as puller3velocidadeset,"
+                + "(VUlc2_IndTempControle1)as vulc2queimadorind,(Vulc2_SetTempControle1)as vulc2queimadorset,"
+                + "(Vulc2_IndTempControle2)as vulc2queimador2ind,(Vulc2_SetTempControle2)as vulc2queimador2set,"
+                + "(Vulc1_IndEsteira)as vulc2esteiraind,(Vulc1_SetEsteira)as vulc2esteiraset,"
+                + "(Banheira1_BombaPerfil_OnOff)as banheira1onof, (Banheira1_BombaTanque_OnOff)as banheira1bombatanqueonof,"
+                + "(Banheira1_IndTempChiller)as b1tempchillerind,(Banheira1_SetTempChiller)as b1tempchillerset,"
+                + "(Banheira1_IndTempReservatorio)as banheira1reservatorioind,(Banheira1_SetTempReservatorio)as b1reserset,"
+                + "(Banheira2_BombaPerfil_OnOff)as banheira2onof, (Banheira2_BombaTanque_OnOff)as banheira2bombatanqueonof,"
+                + "(Banheira2_InfTempChiller)as b2tempchillerind,(Banheira2_SetTempChiller)as b2tempchillerset,"
+                + "(Banheira2_IndTempTanque)as banheira2reservatorioind,(Banheira2_SetTempTanque)as b2reserset,"
+                + "(Banheira3_BombaPerfil_OnOff)as banheira3onof, (Banheira3_BombaTanque_OnOff)as banheira3bombatanqueonof,"
+                + "(Banheira3_IndTempChiller)as b3tempchillerind,(Banheira3_SetTempChiller)as b3tempchillerset,"
+                + "(Banheira3_IndTempTanque)as banheira3reservatorioind,(Banheira3_SetTempTanque)as b3reserset,"
+                + "(Puller1_Inversor_OnOff) as pullerinversoronof,(Puller2_Inversor_OnOff) as puller2inversoronof,(Puller3_InversorOnOff)as puller3inversoronof,"
+                + "(Pintura_B1_Set)as pinturab1set,(Pintura_B1_OnOff) as pintura1onof,"
+                + "(Pintura_B2_Set)as pinturab2set,(Pintura_B2_OnOff)as pintura2onof,"
+                + "(Pintura_B3_Set)as pinturab3set, (Pintura_B3_OnOff)as pintura3onof,"
+                + "(Pintura_B4_Set)as pinturab4set, (Pintura_B4_OnOff)as pintura4onof,"
+                + "(InfraRed_SetLampFrontal)as iflampfrontal,(InfraRed_LampFrontal_OnOff)as iflampfonof, "
+                + "(InfraRed_SetLampCentral)as iflampcentral, (InfraRed_LampCentral_OnOff)as iflampconof,"
+                + "(InfraRed_SetLampTraseira)as iflamptraseira,(InfraRed_LampTraseira_OnOff)as iflamptonof,"
+                + "(Perfil)as perfil,(InfraRed_Exaustor_OnOff)as ifexaustoronof, "
+                + "(InfraRed_IndEsteira)as ifesteiraind, (InfraRed_SetEsteira)as ifesteiraset,"
+                + "(InfraRed_Vent2)as ifventilador,"
+                + "(Cortadeira_SetVelocidade)as cortvelocidade,(Cortadeira_Comprimento)as comprimento,"
+                + "(Cortadeira_Serra_Recuo)as cortserrarecuo , (Cortadeira_Serra_Avanco)as cortserraavanco FROM L11 ORDER BY E3TimeStamp DESC";
+    }
+
+    private static String getQueryL11_Alarmes() {
+        return "SELECT TOP 1 (NumAlarmesAqFita)as alarmaqfita, (NumAlarmesExtA)as alarmexta,(NumAlarmesExtB)as alarmextb,"
+                + "(NumAlarmesExtC)as alarmextc,(NumAlarmesExtD)as alarmextd,(NumAlarmesMicroondas)as alarmmc,"
+                + "(NumAlarmesHotAir1)as alarmhotair1,(NumAlarmesHotAir2)as alarmhotair2,"
+                + "(NumAlarmesBanheira1)as alarmb1,(NumAlarmesPuller1)as alarmpuller1,(NumAlarmesPintura)as alarmpintura,"
+                + "(NumAlarmesInfraRed)as alarmir,"
+                + "(NumAlarmesBanheira2)as alarmb2,(NumAlarmesBanheira3)as alarmb3,(NumAlarmesPuller2)as alarmpuller2,"
+                + "(NumAlarmesPuller3)as alarmpuller3,(NumAlarmesCortadeira)as alarmcort FROM L11 ORDER BY E3TimeStamp DESC";
+    }
+
+    private static String getQueryL11_Criticos() {
+        return "SELECT TOP 1 (ExtA_RPM)as extarpm,(ExtB_RPM)as extbrpm,(ExtC_RPM)as extcrpm,(ExtD_RPM)as extdrpm,"
+                + "(ExtA_Pressao)as extabar,(ExtB_Pressao)as extbbar,(ExtC_Pressao)as extcbar,(ExtD_Pressao)as extdbar,"
+                + "(Puller1_Velocidade)as puller1velocidadeind FROM L11_Criticos ORDER BY E3TimeStamp DESC";
     }
 
     private static String[] getQuerysPainelPrincipal() {

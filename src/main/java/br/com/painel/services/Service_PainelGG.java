@@ -34,6 +34,7 @@ public final class Service_PainelGG extends Service<PainelGG> {
      * @return Thread
      */
     public synchronized Thread painelPrincipal() {
+        threads.add("painelPrincipal");
         return new Thread(new Runnable() {
             @Override
             public void run() {
@@ -50,7 +51,7 @@ public final class Service_PainelGG extends Service<PainelGG> {
                     ex.printStackTrace();
                 }
             }
-        });
+        }, "painelPrincipal");
     }
 
     /**

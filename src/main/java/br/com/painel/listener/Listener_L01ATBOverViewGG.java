@@ -8,6 +8,7 @@ package br.com.painel.listener;
 import br.com.painel.framesGG.L01ATBOverViewGG;
 import br.com.painel.interfaces.ListenerAdapter;
 import br.com.painel.services.Service_L01ATBOverViewGG;
+import br.com.painel.util.ControleThreads;
 
 /**
  *
@@ -27,14 +28,15 @@ public final class Listener_L01ATBOverViewGG extends ListenerAdapter<L01ATBOverV
     @Override
     protected void attachListeners() {
         form.getJLabelList().forEach(lb -> lb.addMouseListener(service.getMouseListener()));
+        form.addWindowListener(service.getServiceStopControl());
     }
 
     /**
      * Inicia o monitoramento de valores para L03 e L03_Criticos.
      */
     private void iniciarMonitoramento() {
-        service.L03().start();
-        service.L03_Criticos().start();
+        ControleThreads.autoInitThread(service.L03());
+        ControleThreads.autoInitThread(service.L03_Criticos());
     }
 
 }

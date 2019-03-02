@@ -21,6 +21,10 @@ import br.com.painel.frames.status.L09ExtrusoraD;
 import br.com.painel.frames.status.L09Microondas;
 import br.com.painel.frames.status.L09OverView;
 import br.com.painel.frames.status.L11Alarmes;
+import br.com.painel.frames.status.L11ExtrusoraA;
+import br.com.painel.frames.status.L11ExtrusoraB;
+import br.com.painel.frames.status.L11ExtrusoraC;
+import br.com.painel.frames.status.L11ExtrusoraD;
 import br.com.painel.frames.status.L11Microondas;
 import br.com.painel.frames.status.L11OverView;
 import br.com.painel.framesGG.L01ATBOverViewGG;
@@ -52,6 +56,8 @@ public class FrameUtil {
             openFramesL09((JLabel) comp);
         } else if (frame.getClass() == PainelGG.class) {
             openFramesPainelPrincipal((JButton) comp);
+        } else if (frame.getClass() == L11OverViewGG.class) {
+            openFramesL11((JLabel) comp);
         }
     }
 
@@ -108,26 +114,64 @@ public class FrameUtil {
         }
     }
 
+    private static void openFramesL11(JLabel label) {
+        switch (label.getName()) {
+            case "jLabel69":
+                openFrame(L11ExtrusoraA.class, null);
+                break;
+            case "jLabel68":
+            case "jLabel70":
+            case "jLabel71":
+                openFrame(L11ExtrusoraB.class, null);
+            case "jLabel73":
+            case "jLabel74":
+            case "jLabel75":
+                openFrame(L11ExtrusoraC.class, null);
+                break;
+            case "jLabel72":
+                openFrame(L11ExtrusoraD.class, null);
+                break;
+            case "jLabel76":
+                openFrame(L11Microondas.class, null);
+                break;
+        }
+    }
+
     private static void openFramesPainelPrincipal(JButton button) {
         Dimension dms = Utilidades.getResolutionScreen();
+
         switch (button.getActionCommand()) {
             case "jButton1":
-                FrameUtil.openFrame(isSmallScreen(dms) ? L11OverView.class : L11OverViewGG.class, dms);
+                FrameUtil.openFrame(isSmallScreen(dms) ? L11OverView.class
+                        : L11OverViewGG.class,
+                        dms);
                 break;
+
             case "jButton2":
-                FrameUtil.openFrame(isSmallScreen(dms) ? L09OverView.class : L09OverViewGG.class, dms);
+                FrameUtil.openFrame(isSmallScreen(dms) ? L09OverView.class
+                        : L09OverViewGG.class,
+                        dms);
                 break;
+
             case "jButton3":
-                FrameUtil.openFrame(isSmallScreen(dms) ? L01ATBOverView.class : L01ATBOverViewGG.class, dms);
+                FrameUtil.openFrame(isSmallScreen(dms) ? L01ATBOverView.class
+                        : L01ATBOverViewGG.class,
+                        dms);
                 break;
+
             case "jButton4":
-                FrameUtil.openFrame(L11Alarmes.class, null);
+                FrameUtil.openFrame(L11Alarmes.class,
+                        null);
                 break;
+
             case "jButton5":
-                FrameUtil.openFrame(L09Alarmes.class, null);
+                FrameUtil.openFrame(L09Alarmes.class,
+                        null);
                 break;
+
             case "jButton6":
-                FrameUtil.openFrame(L09DDZ.class, null);
+                FrameUtil.openFrame(L09DDZ.class,
+                        null);
                 break;
         }
     }
@@ -166,9 +210,12 @@ public class FrameUtil {
     public static void get(JFrame frame, Object target) {
         try {
             Method[] methods = frame.getClass().getDeclaredMethods();
+
             for (Method mtFrame : methods) {
-                if (mtFrame.isAnnotationPresent(MapFrame.class)) {
-                    MapFrame map = mtFrame.getAnnotation(MapFrame.class);
+                if (mtFrame.isAnnotationPresent(MapFrame.class
+                )) {
+                    MapFrame map = mtFrame.getAnnotation(MapFrame.class
+                    );
                     if (map.target() == target.getClass()) {
                         if (!map.field().equals("")) {
                             Field field = target.getClass().getDeclaredField(map.field());
@@ -196,9 +243,12 @@ public class FrameUtil {
     public static void set(JFrame frame, Object target) {
         try {
             Method[] methods = frame.getClass().getDeclaredMethods();
+
             for (Method mtFrame : methods) {
-                if (mtFrame.isAnnotationPresent(MapFrame.class)) {
-                    MapFrame map = mtFrame.getAnnotation(MapFrame.class);
+                if (mtFrame.isAnnotationPresent(MapFrame.class
+                )) {
+                    MapFrame map = mtFrame.getAnnotation(MapFrame.class
+                    );
                     if (map.target() == target.getClass()) {
                         if (!map.field().equals("")) {
                             Field field = target.getClass().getDeclaredField(map.field());
@@ -213,6 +263,7 @@ public class FrameUtil {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+
         }
     }
 
@@ -232,6 +283,7 @@ public class FrameUtil {
             ex.printStackTrace();
         }
         return null;
+
     }
 
     /**
@@ -244,10 +296,13 @@ public class FrameUtil {
     private static void setFromFrame(JFrame frame, Method mtFrame, Object value) {
         try {
             if (mtFrame.getReturnType() == JLabel.class) {
-                mtFrame.invoke(frame).getClass().getMethod("setText", String.class).invoke(mtFrame.invoke(frame), cast(String.class, value));
+                mtFrame.invoke(frame).getClass().getMethod("setText", String.class
+                ).invoke(mtFrame.invoke(frame), cast(String.class,
+                        value));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+
         }
     }
 

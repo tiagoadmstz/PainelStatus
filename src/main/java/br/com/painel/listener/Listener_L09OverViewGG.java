@@ -8,6 +8,7 @@ package br.com.painel.listener;
 import br.com.painel.framesGG.L09OverViewGG;
 import br.com.painel.interfaces.ListenerAdapter;
 import br.com.painel.services.Service_L09OverViewGG;
+import br.com.painel.util.ControleThreads;
 
 /**
  *
@@ -32,10 +33,11 @@ public final class Listener_L09OverViewGG extends ListenerAdapter<L09OverViewGG>
     @Override
     protected void attachListeners() {
         form.getJLabelList().forEach(lb -> lb.addMouseListener(service.getMouseListener()));
+        form.addWindowListener(service.getServiceStopControl());
     }
 
     private void initMonitoramento() {
-        service.L09().start();
+        ControleThreads.autoInitThread(service.L09());
     }
 
 }
