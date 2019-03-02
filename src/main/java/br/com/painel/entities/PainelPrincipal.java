@@ -61,13 +61,13 @@ public class PainelPrincipal extends SuperObject {
         velocidadeL11 = 0;
         totalproduzidoL11 = 0;
     }
-    
+
     public String getPorcscarpL09DocStr() {
-        return String.format("%.1f", porcscarpL09Doc) + "%";
+        return percentFormat(porcscarpL09Doc);
     }
 
     public String getPorcscarpL03DocStr() {
-        return String.format("%.1f", porcscarpL03Doc) + "%";
+        return percentFormat(porcscarpL03Doc);
     }
 
     public boolean isAlarmeVelocidade() {

@@ -9,11 +9,7 @@ import br.com.painel.entities.L03;
 import br.com.painel.entities.L03_Criticos;
 import br.com.painel.framesGG.L01ATBOverViewGG;
 import br.com.painel.interfaces.Service;
-import br.com.painel.util.FrameUtil;
 import br.com.painel.util.SQLUtil;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JLabel;
 
 /**
  * Classe de serviço do frame L01ATBOverViewGG
@@ -38,7 +34,7 @@ public class Service_L01ATBOverViewGG extends Service<L01ATBOverViewGG> {
                 try {
                     while (true) {
                         L03 l03 = new L03();
-                        l03.setValuesByResultSet(SQLUtil.getResultSet("L03"));
+                        l03.setValuesByResultSet(SQLUtil.getResultSet(SQLUtil.L03));
                         //l03.printValues();
                         setDados(form, l03);
                         toogleOnOffFields(form.getOnOffFields());
@@ -64,7 +60,7 @@ public class Service_L01ATBOverViewGG extends Service<L01ATBOverViewGG> {
                 try {
                     while (true) {
                         L03_Criticos l03_criticos = new L03_Criticos();
-                        l03_criticos.setValuesByResultSet(SQLUtil.getResultSet("L03_Criticos"));
+                        l03_criticos.setValuesByResultSet(SQLUtil.getResultSet(SQLUtil.L03_CRITICOS));
                         //l03_criticos.printValues();
                         setDados(form, l03_criticos);
                         Thread.sleep(1000l);
@@ -74,21 +70,6 @@ public class Service_L01ATBOverViewGG extends Service<L01ATBOverViewGG> {
                 }
             }
         });
-    }
-
-    /**
-     * Retorna um mouse listener de clique para JLabel que auxilia na abertura
-     * de outros frames.
-     *
-     * @return MouseAdapter mouseClicked
-     */
-    public MouseAdapter getMouseListener() {
-        return new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent event) {
-                FrameUtil.openFrame(((JLabel) event.getSource()));
-            }
-        };
     }
 
 }

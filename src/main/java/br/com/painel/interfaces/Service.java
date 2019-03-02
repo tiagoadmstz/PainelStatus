@@ -6,6 +6,8 @@
 package br.com.painel.interfaces;
 
 import br.com.painel.util.FrameUtil;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -74,4 +76,18 @@ public abstract class Service<T> {
         }
     }
 
+    /**
+     * Retorna um mouse listener de clique para JLabel que auxilia na abertura
+     * de outros frames.
+     *
+     * @return MouseAdapter mouseClicked
+     */
+    public MouseAdapter getMouseListener() {
+        return new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent event) {
+                FrameUtil.openFrame((JComponent) event.getSource(), (JFrame) form);
+            }
+        };
+    }
 }

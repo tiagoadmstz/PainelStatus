@@ -13,10 +13,10 @@ import br.com.painel.services.Service_L09OverViewGG;
  *
  * @author Tiago
  */
-public class Listener_L09OverViewGG extends ListenerAdapter<L09OverViewGG>{
+public final class Listener_L09OverViewGG extends ListenerAdapter<L09OverViewGG> {
 
     private final Service_L09OverViewGG service;
-    
+
     public Listener_L09OverViewGG(L09OverViewGG form) {
         super(form);
         service = new Service_L09OverViewGG(form);
@@ -24,8 +24,18 @@ public class Listener_L09OverViewGG extends ListenerAdapter<L09OverViewGG>{
     }
 
     @Override
-    protected void attachListeners() {
-        
+    protected void initComponents() {
+        super.initComponents();
+        initMonitoramento();
     }
-    
+
+    @Override
+    protected void attachListeners() {
+        form.getJLabelList().forEach(lb -> lb.addMouseListener(service.getMouseListener()));
+    }
+
+    private void initMonitoramento() {
+        service.L09().start();
+    }
+
 }

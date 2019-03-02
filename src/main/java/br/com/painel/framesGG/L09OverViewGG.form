@@ -1855,6 +1855,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel69">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel69" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="210" y="190" width="51" height="85"/>
@@ -1862,6 +1865,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel70">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel70" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="90" y="240" width="80" height="20"/>
@@ -1869,6 +1875,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel71">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel71" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="110" y="260" width="80" height="20"/>
@@ -1876,6 +1885,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel68">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel68" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="150" y="280" width="40" height="30"/>
@@ -1883,6 +1895,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel73">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel73" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="150" y="320" width="40" height="30"/>
@@ -1890,6 +1905,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel75">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel75" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="110" y="350" width="80" height="20"/>
@@ -1897,6 +1915,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel74">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel74" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="90" y="370" width="80" height="20"/>
@@ -1904,6 +1925,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel72">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel72" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="210" y="360" width="51" height="83"/>
@@ -1911,6 +1935,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel76">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jLabel76" noResource="true"/>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="280" y="250" width="370" height="130"/>

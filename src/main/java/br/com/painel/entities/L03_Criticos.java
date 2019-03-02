@@ -146,7 +146,7 @@ public class L03_Criticos extends SuperObject implements Serializable {
     }
 
     private String formatDouble(Double valor) {
-        return String.format("%1$,.1f", valor);
+        return numberFormat(valor);
     }
 
 }

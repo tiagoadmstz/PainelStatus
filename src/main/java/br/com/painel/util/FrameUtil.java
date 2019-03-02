@@ -14,6 +14,11 @@ import br.com.painel.frames.status.L01ATBExtrusoraD;
 import br.com.painel.frames.status.L01ATBOverView;
 import br.com.painel.frames.status.L09Alarmes;
 import br.com.painel.frames.status.L09DDZ;
+import br.com.painel.frames.status.L09ExtrusoraA;
+import br.com.painel.frames.status.L09ExtrusoraB;
+import br.com.painel.frames.status.L09ExtrusoraC;
+import br.com.painel.frames.status.L09ExtrusoraD;
+import br.com.painel.frames.status.L09Microondas;
 import br.com.painel.frames.status.L09OverView;
 import br.com.painel.frames.status.L11Alarmes;
 import br.com.painel.frames.status.L11Microondas;
@@ -21,6 +26,7 @@ import br.com.painel.frames.status.L11OverView;
 import br.com.painel.framesGG.L01ATBOverViewGG;
 import br.com.painel.framesGG.L09OverViewGG;
 import br.com.painel.framesGG.L11OverViewGG;
+import br.com.painel.framesGG.PainelGG;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.lang.reflect.Field;
@@ -39,55 +45,89 @@ import javax.swing.UIManager;
  */
 public class FrameUtil {
 
+    public static void openFrame(JComponent comp, JFrame frame) {
+        if (frame.getClass() == L01ATBOverViewGG.class) {
+            openFramesL01AT((JLabel) comp);
+        } else if (frame.getClass() == L09OverViewGG.class) {
+            openFramesL09((JLabel) comp);
+        } else if (frame.getClass() == PainelGG.class) {
+            openFramesPainelPrincipal((JButton) comp);
+        }
+    }
+
     /**
      * Abre um frame pelo nome do label.
      *
      * @param label
      */
-    public static void openFrame(JLabel label) {
+    private static void openFramesL01AT(JLabel label) {
         switch (label.getName()) {
             case "jLabel69":
-                openFrame(L01ATBExtrusoraA.class, null);
+                FrameUtil.openFrame(L01ATBExtrusoraA.class, null);
                 break;
             case "jLabel68":
             case "jLabel70":
             case "jLabel71":
-                openFrame(L01ATBExtrusoraB.class, null);
+                FrameUtil.openFrame(L01ATBExtrusoraB.class, null);
                 break;
             case "jLabel73":
             case "jLabel74":
             case "jLabel75":
-                openFrame(L01ATBExtrusoraC.class, null);
+                FrameUtil.openFrame(L01ATBExtrusoraC.class, null);
                 break;
             case " jLabel72":
-                openFrame(L01ATBExtrusoraD.class, null);
+                FrameUtil.openFrame(L01ATBExtrusoraD.class, null);
                 break;
             case "jLabel76":
-                openFrame(L11Microondas.class, null);
+                FrameUtil.openFrame(L11Microondas.class, null);
                 break;
         }
     }
 
-    public static void openFrame(JButton button) {
+    private static void openFramesL09(JLabel label) {
+        switch (label.getName()) {
+            case "jLabel69":
+                FrameUtil.openFrame(L09ExtrusoraA.class, null);
+                break;
+            case "jLabel68":
+            case "jLabel70":
+            case "jLabel71":
+                FrameUtil.openFrame(L09ExtrusoraB.class, null);
+                break;
+            case "jLabel73":
+            case "jLabel74":
+            case "jLabel75":
+                FrameUtil.openFrame(L09ExtrusoraC.class, null);
+                break;
+            case "jLabel72":
+                FrameUtil.openFrame(L09ExtrusoraD.class, null);
+                break;
+            case "jLabel76":
+                FrameUtil.openFrame(L09Microondas.class, null);
+                break;
+        }
+    }
+
+    private static void openFramesPainelPrincipal(JButton button) {
         Dimension dms = Utilidades.getResolutionScreen();
         switch (button.getActionCommand()) {
             case "jButton1":
-                openFrame(isSmallScreen(dms) ? L11OverView.class : L11OverViewGG.class, dms);
+                FrameUtil.openFrame(isSmallScreen(dms) ? L11OverView.class : L11OverViewGG.class, dms);
                 break;
             case "jButton2":
-                openFrame(isSmallScreen(dms) ? L09OverView.class : L09OverViewGG.class, dms);
+                FrameUtil.openFrame(isSmallScreen(dms) ? L09OverView.class : L09OverViewGG.class, dms);
                 break;
             case "jButton3":
-                openFrame(isSmallScreen(dms) ? L01ATBOverView.class : L01ATBOverViewGG.class, dms);
+                FrameUtil.openFrame(isSmallScreen(dms) ? L01ATBOverView.class : L01ATBOverViewGG.class, dms);
                 break;
             case "jButton4":
-                openFrame(L11Alarmes.class, null);
+                FrameUtil.openFrame(L11Alarmes.class, null);
                 break;
             case "jButton5":
-                openFrame(L09Alarmes.class, null);
+                FrameUtil.openFrame(L09Alarmes.class, null);
                 break;
             case "jButton6":
-                openFrame(L09DDZ.class, null);
+                FrameUtil.openFrame(L09DDZ.class, null);
                 break;
         }
     }

@@ -11,6 +11,7 @@ import br.com.painel.services.Service_PainelGG;
 import br.com.painel.util.FrameUtil;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  *
@@ -32,7 +33,7 @@ public final class Listener_PainelGG extends ListenerAdapter<PainelGG> {
         service.initLabelsFrame();
         iniciarMonitoramento();
     }
-    
+
     @Override
     protected void attachListeners() {
         form.getJButtonList().forEach(bt -> bt.addActionListener(this));
@@ -40,11 +41,11 @@ public final class Listener_PainelGG extends ListenerAdapter<PainelGG> {
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        FrameUtil.openFrame((JButton) event.getSource());
+        FrameUtil.openFrame((JButton) event.getSource(), (JFrame) form);
     }
 
     private void iniciarMonitoramento() {
         service.painelPrincipal().start();
     }
-    
+
 }

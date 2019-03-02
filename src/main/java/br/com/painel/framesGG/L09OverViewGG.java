@@ -5,13 +5,13 @@
  */
 package br.com.painel.framesGG;
 
-import br.com.painel.frames.status.L09ExtrusoraB;
-import br.com.painel.frames.status.L09ExtrusoraA;
-import br.com.painel.frames.status.L09ExtrusoraD;
-import br.com.painel.frames.status.L09ExtrusoraC;
-import br.com.painel.frames.status.L09Microondas;
+import br.com.painel.annotations.MapFrame;
+import br.com.painel.entities.L09;
+import br.com.painel.entities.L09_Criticos;
 import br.com.painel.interfaces.ManipulaFrame;
 import br.com.painel.listener.Listener_L09OverViewGG;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JLabel;
 
 /**
@@ -33,8 +33,292 @@ public final class L09OverViewGG extends ManipulaFrame {
     }
 
     @Override
+    public List<JLabel> getJLabelList() {
+        return Arrays.asList(jLabel69, jLabel68, jLabel70, jLabel71, jLabel73, jLabel74, jLabel75, jLabel72, jLabel76);
+    }
+
+    @Override
     public JLabel[][] getOnOffFields() {
-        return new JLabel[][]{};
+        return new JLabel[][]{
+            {lbaBanheira1BombaChillerON, lbBanheira1BombaChillerOF},
+            {lbaBanheira1BombaTanque, lbBanheira1BombaTanqueON, lbBanheira1BombaTanqueOf},
+            {lbPuller1, lbPuller1ON, lbPuller1OF}
+        };
+    }
+
+    @MapFrame(get = "getPinturaB1", target = L09.class)
+    public JLabel getLbPinturaB1Ind() {
+        return lbPinturaB1Ind;
+    }
+
+    @MapFrame(get = "getPinturaB2", target = L09.class)
+    public JLabel getLbPinturaB2Ind() {
+        return lbPinturaB2Ind;
+    }
+
+    @MapFrame(get = "getPinturaB3", target = L09.class)
+    public JLabel getLbPinturaB3Ind() {
+        return lbPinturaB3Ind;
+    }
+
+    @MapFrame(get = "getPinturaB4", target = L09.class)
+    public JLabel getLbPinturaB4Ind() {
+        return lbPinturaB4Ind;
+    }
+
+    @MapFrame(get = "getIFLTraseira", target = L09.class)
+    public JLabel getLbIFLTraseiraInd() {
+        return lbIFLTraseiraInd;
+    }
+
+    @MapFrame(get = "getIFLFrontal", target = L09.class)
+    public JLabel getLbIFLFrontalInd() {
+        return lbIFLFrontalInd;
+    }
+
+    @MapFrame(get = "getIFLCentral", target = L09.class)
+    public JLabel getLbIFLCentralInd() {
+        return lbIFLCentralInd;
+    }
+
+    @MapFrame(get = "getIFLEsteira2", target = L09.class)
+    public JLabel getLbIFLEsteira2Ind() {
+        return lbIFLEsteira2Ind;
+    }
+
+    @MapFrame(get = "getIFLEsteira", target = L09.class)
+    public JLabel getLbIFLEsteiraInd() {
+        return lbIFLEsteiraInd;
+    }
+
+    @MapFrame(field = "micropctind", target = L09.class)
+    public JLabel getLbMicroPctInd() {
+        return lbMicroPctInd;
+    }
+
+    @MapFrame(field = "micropctset", target = L09.class)
+    public JLabel getLbMicroPctSet() {
+        return lbMicroPctSet;
+    }
+
+    @MapFrame(field = "microesqind", target = L09.class)
+    public JLabel getLbMicroEsqInd() {
+        return lbMicroEsqInd;
+    }
+
+    @MapFrame(field = "microesqset", target = L09.class)
+    public JLabel getLbMicroEsqSet() {
+        return lbMicroEsqSet;
+    }
+
+    @MapFrame(field = "microesteiraind", target = L09.class)
+    public JLabel getLbMicroEsteiraInd() {
+        return lbMicroEsteiraInd;
+    }
+
+    @MapFrame(field = "microesteiraset", target = L09.class)
+    public JLabel getLbMicroEsteiraSet() {
+        return lbMicroEsteiraSet;
+    }
+
+    @MapFrame(field = "microexaustorind", target = L09.class)
+    public JLabel getLbMicroExaustorInd() {
+        return lbMicroExaustorInd;
+    }
+
+    @MapFrame(field = "microexaustorset", target = L09.class)
+    public JLabel getLbMicroExaustorSet() {
+        return lbMicroExaustorSet;
+    }
+
+    @MapFrame(field = "microrefrigeradoind", target = L09.class)
+    public JLabel getLbMicroRefrigeradoInd() {
+        return lbMicroRefrigeradoInd;
+    }
+
+    @MapFrame(field = "microrefrigeradoset", target = L09.class)
+    public JLabel getLbMicroRefrigeradoSet() {
+        return lbMicroRefrigeradoSet;
+    }
+
+    @MapFrame(field = "vulc1queimadorind", target = L09.class)
+    public JLabel getLbVulc1QueimadorInd() {
+        return lbVulc1QueimadorInd;
+    }
+
+    @MapFrame(field = "vulc1queimadorset", target = L09.class)
+    public JLabel getLbVulc1QueimadorSet() {
+        return lbVulc1QueimadorSet;
+    }
+
+    @MapFrame(field = "vulc1queimador2ind", target = L09.class)
+    public JLabel getLbVulc1Queimador2Ind() {
+        return lbVulc1Queimador2Ind;
+    }
+
+    @MapFrame(field = "vulc1queimador2set", target = L09.class)
+    public JLabel getLbVulc1Queimador2Set() {
+        return lbVulc1Queimador2Set;
+    }
+
+    @MapFrame(field = "vulc1esteiraind", target = L09.class)
+    public JLabel getLbVulc1EsteiraInd() {
+        return lbVulc1EsteiraInd;
+    }
+
+    @MapFrame(field = "vulc1esteiraset", target = L09.class)
+    public JLabel getLbVulc1EsteiraSet() {
+        return lbVulc1EsteiraSet;
+    }
+
+    @MapFrame(field = "puller1velocidadeset", target = L09.class)
+    public JLabel getLbPuller1VelocidadeSet() {
+        return lbPuller1VelocidadeSet;
+    }
+
+    @MapFrame(field = "vulc2queimadorind", target = L09.class)
+    public JLabel getLbVulc2QueimadorInd() {
+        return lbVulc2QueimadorInd;
+    }
+
+    @MapFrame(field = "vulc2queimadorset", target = L09.class)
+    public JLabel getLbVulc2QueimadorSet() {
+        return lbVulc2QueimadorSet;
+    }
+
+    @MapFrame(field = "vulc2queimador2ind", target = L09.class)
+    public JLabel getLbVulc2Queimador2Ind() {
+        return lbVulc2Queimador2Ind;
+    }
+
+    @MapFrame(field = "vulc2queimador2set", target = L09.class)
+    public JLabel getLbVulc2Queimador2Set() {
+        return lbVulc2Queimador2Set;
+    }
+
+    @MapFrame(field = "vulc2esteiraind", target = L09.class)
+    public JLabel getLbVulc2EsteiraInd() {
+        return lbVulc2EsteiraInd;
+    }
+
+    @MapFrame(field = "vulc2esteiraset", target = L09.class)
+    public JLabel getLbVulc2EsteiraSet() {
+        return lbVulc2EsteiraSet;
+    }
+
+    @MapFrame(field = "banheira1reservatorioind", target = L09.class)
+    public JLabel getLbBanheirareseRvatorioInd() {
+        return lbBanheirareseRvatorioInd;
+    }
+
+    @MapFrame(field = "banheira1onof", target = L09.class)
+    public JLabel getLbaBanheira1BombaChillerON() {
+        return lbaBanheira1BombaChillerON;
+    }
+
+    @MapFrame(field = "banheira1bombatanqueonof", target = L09.class)
+    public JLabel getLbaBanheira1BombaTanque() {
+        return lbaBanheira1BombaTanque;
+    }
+
+    @MapFrame(field = "pullerinversoronof", target = L09.class)
+    public JLabel getLbPuller1() {
+        return lbPuller1;
+    }
+
+    @MapFrame(field = "pinturab1set", target = L09.class)
+    public JLabel getLbPinturaB1Set() {
+        return lbPinturaB1Set;
+    }
+
+    @MapFrame(field = "pinturab2set", target = L09.class)
+    public JLabel getLbPinturaB2Set() {
+        return lbPinturaB2Set;
+    }
+
+    @MapFrame(field = "pinturab3set", target = L09.class)
+    public JLabel getLbPinturaB3Set() {
+        return lbPinturaB3Set;
+    }
+
+    @MapFrame(field = "pinturab4set", target = L09.class)
+    public JLabel getLbPinturaB4Set() {
+        return lbPinturaB4Set;
+    }
+
+    @MapFrame(field = "iflampfrontal", target = L09.class)
+    public JLabel getLbIFLFrontalSet() {
+        return lbIFLFrontalSet;
+    }
+
+    @MapFrame(field = "iflampcentral", target = L09.class)
+    public JLabel getLbIFLCentralSet() {
+        return lbIFLCentralSet;
+    }
+
+    @MapFrame(field = "iflamptraseira", target = L09.class)
+    public JLabel getLbIFLTraseiraSet() {
+        return lbIFLTraseiraSet;
+    }
+
+    @MapFrame(field = "ifesteira2set", target = L09.class)
+    public JLabel getLbIFLEsteira2Set() {
+        return lbIFLEsteira2Set;
+    }
+
+    @MapFrame(field = "perfil", target = L09.class)
+    public JLabel getLbPerfil() {
+        return lbPerfil;
+    }
+
+    @MapFrame(field = "ifesteiraset", target = L09.class)
+    public JLabel getLbIFLEsteiraSet() {
+        return lbIFLEsteiraSet;
+    }
+
+    @MapFrame(get = "getExtarpmStr", target = L09_Criticos.class)
+    public JLabel getLbExtARpm() {
+        return lbExtARpm;
+    }
+
+    @MapFrame(get = "getExtbrpmStr", target = L09_Criticos.class)
+    public JLabel getLbExtBRpm() {
+        return lbExtBRpm;
+    }
+
+    @MapFrame(get = "getExtcrpmStr", target = L09_Criticos.class)
+    public JLabel getLbExtCRpm() {
+        return lbExtCRpm;
+    }
+
+    @MapFrame(get = "getExtdrpmStr", target = L09_Criticos.class)
+    public JLabel getLbExtDRpm() {
+        return lbExtDRpm;
+    }
+
+    @MapFrame(field = "extabar", target = L09_Criticos.class)
+    public JLabel getLbExtABar() {
+        return lbExtABar;
+    }
+
+    @MapFrame(field = "extbbar", target = L09_Criticos.class)
+    public JLabel getLbExtBBar() {
+        return lbExtBBar;
+    }
+
+    @MapFrame(field = "extcbar", target = L09_Criticos.class)
+    public JLabel getLbExtCBar() {
+        return lbExtCBar;
+    }
+
+    @MapFrame(field = "extdbar", target = L09_Criticos.class)
+    public JLabel getLbExtDBar() {
+        return lbExtDBar;
+    }
+
+    @MapFrame(field = "puller1velocidadeind", target = L09_Criticos.class)
+    public JLabel getLbPuller1VelocidadeInd() {
+        return lbPuller1VelocidadeInd;
     }
 
     /**
@@ -810,14 +1094,32 @@ public final class L09OverViewGG extends ManipulaFrame {
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
         jLabel55.setText("rpm");
         jPanel1.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 840, 40, 30));
+
+        jLabel69.setName("jLabel69"); // NOI18N
         jPanel1.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 51, 85));
+
+        jLabel70.setName("jLabel70"); // NOI18N
         jPanel1.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 80, 20));
+
+        jLabel71.setName("jLabel71"); // NOI18N
         jPanel1.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 80, 20));
+
+        jLabel68.setName("jLabel68"); // NOI18N
         jPanel1.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 40, 30));
+
+        jLabel73.setName("jLabel73"); // NOI18N
         jPanel1.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 40, 30));
+
+        jLabel75.setName("jLabel75"); // NOI18N
         jPanel1.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 80, 20));
+
+        jLabel74.setName("jLabel74"); // NOI18N
         jPanel1.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 80, 20));
+
+        jLabel72.setName("jLabel72"); // NOI18N
         jPanel1.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 51, 83));
+
+        jLabel76.setName("jLabel76"); // NOI18N
         jPanel1.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 370, 130));
 
         jLabel1.setForeground(new java.awt.Color(0, 255, 255));
@@ -848,7 +1150,7 @@ public final class L09OverViewGG extends ManipulaFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        //<editor-fold defaultstate=collapsed desc= Look and feel setting code (optional) >
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */

@@ -16,6 +16,20 @@ import java.util.List;
  */
 public abstract class SuperObject {
 
+    private final String formatStr = "%1$,.1f";
+
+    protected String numberFormat(float number) {
+        return String.format(formatStr, number);
+    }
+
+    protected String numberFormat(double number) {
+        return String.format(formatStr, number);
+    }
+
+    protected String percentFormat(double number) {
+        return String.format("%.1f", number) + "%";
+    }
+
     public void setValuesByResultSet(ResultSet rst) {
         try {
             Field[] fields = this.getClass().getDeclaredFields();
