@@ -13,26 +13,26 @@ import br.com.painel.interfaces.SuperObject;
  */
 public class L09_Criticos extends SuperObject {
 
-    private float extarpm;
-    private float extbrpm;
-    private float extcrpm;
-    private float extdrpm;
-    private float extabar;
-    private float extbbar;
-    private float extcbar;
-    private float extdbar;
-    private float puller1velocidadeind;
+    private double extarpm;
+    private double extbrpm;
+    private double extcrpm;
+    private double extdrpm;
+    private double extabar;
+    private double extbbar;
+    private double extcbar;
+    private double extdbar;
+    private double puller1velocidadeind;
 
     public L09_Criticos() {
-        extarpm = 0f;
-        extbrpm = 0f;
-        extcrpm = 0f;
-        extdrpm = 0f;
-        extabar = 0f;
-        extbbar = 0f;
-        extcbar = 0f;
-        extdbar = 0f;
-        puller1velocidadeind = 0f;
+        extarpm = 0d;
+        extbrpm = 0d;
+        extcrpm = 0d;
+        extdrpm = 0d;
+        extabar = 0d;
+        extbbar = 0d;
+        extcbar = 0d;
+        extdbar = 0d;
+        puller1velocidadeind = 0d;
     }
 
     public String getExtarpmStr() {
@@ -51,75 +51,75 @@ public class L09_Criticos extends SuperObject {
         return numberFormat(extdrpm);
     }
 
-    public float getExtarpm() {
+    public double getExtarpm() {
         return extarpm;
     }
 
-    public void setExtarpm(float extarpm) {
+    public void setExtarpm(double extarpm) {
         this.extarpm = extarpm;
     }
 
-    public float getExtbrpm() {
+    public double getExtbrpm() {
         return extbrpm;
     }
 
-    public void setExtbrpm(float extbrpm) {
+    public void setExtbrpm(double extbrpm) {
         this.extbrpm = extbrpm;
     }
 
-    public float getExtcrpm() {
+    public double getExtcrpm() {
         return extcrpm;
     }
 
-    public void setExtcrpm(float extcrpm) {
+    public void setExtcrpm(double extcrpm) {
         this.extcrpm = extcrpm;
     }
 
-    public float getExtdrpm() {
+    public double getExtdrpm() {
         return extdrpm;
     }
 
-    public void setExtdrpm(float extdrpm) {
+    public void setExtdrpm(double extdrpm) {
         this.extdrpm = extdrpm;
     }
 
-    public float getExtabar() {
+    public double getExtabar() {
         return extabar;
     }
 
-    public void setExtabar(float extabar) {
+    public void setExtabar(double extabar) {
         this.extabar = extabar;
     }
 
-    public float getExtbbar() {
+    public double getExtbbar() {
         return extbbar;
     }
 
-    public void setExtbbar(float extbbar) {
+    public void setExtbbar(double extbbar) {
         this.extbbar = extbbar;
     }
 
-    public float getExtcbar() {
+    public double getExtcbar() {
         return extcbar;
     }
 
-    public void setExtcbar(float extcbar) {
+    public void setExtcbar(double extcbar) {
         this.extcbar = extcbar;
     }
 
-    public float getExtdbar() {
+    public double getExtdbar() {
         return extdbar;
     }
 
-    public void setExtdbar(float extdbar) {
+    public void setExtdbar(double extdbar) {
         this.extdbar = extdbar;
     }
 
-    public float getPuller1velocidadeind() {
+    public double getPuller1velocidadeind() {
         return puller1velocidadeind;
     }
 
-    public void setPuller1velocidadeind(float puller1velocidadeind) {
+    public void setPuller1velocidadeind(double puller1velocidadeind) {
         this.puller1velocidadeind = puller1velocidadeind;
     }
 
