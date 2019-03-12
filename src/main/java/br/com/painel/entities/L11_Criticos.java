@@ -26,6 +26,22 @@ public class L11_Criticos extends SuperObject {
     public L11_Criticos() {
     }
 
+    public String getExtarpmStr() {
+        return numberFormat(extarpm);
+    }
+
+    public String getExtbrpmStr() {
+        return numberFormat(extbrpm);
+    }
+
+    public String getExtcrpmStr() {
+        return numberFormat(extcrpm);
+    }
+
+    public String getExtdrpmStr() {
+        return numberFormat(extdrpm);
+    }
+
     public double getExtarpm() {
         return extarpm;
     }

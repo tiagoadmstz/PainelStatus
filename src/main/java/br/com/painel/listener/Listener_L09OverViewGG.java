@@ -38,6 +38,7 @@ public final class Listener_L09OverViewGG extends ListenerAdapter<L09OverViewGG>
 
     private void initMonitoramento() {
         ControleThreads.autoInitThread(service.L09());
+        ControleThreads.autoInitThread(service.L09_Criticos());
     }
 
 }

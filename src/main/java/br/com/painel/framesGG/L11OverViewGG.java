@@ -5,6 +5,10 @@
  */
 package br.com.painel.framesGG;
 
+import br.com.painel.annotations.MapFrame;
+import br.com.painel.entities.L11;
+import br.com.painel.entities.L11_Alarmes;
+import br.com.painel.entities.L11_Criticos;
 import br.com.painel.interfaces.ManipulaFrame;
 import br.com.painel.listener.Listener_L11OverViewGG;
 import javax.swing.JLabel;
@@ -48,6 +52,486 @@ public final class L11OverViewGG extends ManipulaFrame {
         return new JLabel[]{lbExtA, lbExtB, lbExtC, lbExtD,
             lbMicroondas, lbHotAir1, lbHotAir2, lbBanheira1, lbPuller1, lbPintura,
             lbIR, lbBanheira2, lbBanheira3, lbPulleralarm2, lbPulleralarm3, lbCortadeira};
+    }
+
+    @MapFrame(get = "getMultPintura1", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB1Ind() {
+        return lbPinturaB1Ind;
+    }
+
+    @MapFrame(get = "getMultPintura2", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB2Ind() {
+        return lbPinturaB2Ind;
+    }
+
+    @MapFrame(get = "getMultPintura3", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB3Ind() {
+        return lbPinturaB3Ind;
+    }
+
+    @MapFrame(get = "getMultPintura4", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB4Ind() {
+        return lbPinturaB4Ind;
+    }
+
+    @MapFrame(get = "getMultIFLFrontal", target = L11.class, type = String.class)
+    public JLabel getLbIFLFrontalInd() {
+        return lbIFLFrontalInd;
+    }
+
+    @MapFrame(get = "getMultIFLCentral", target = L11.class, type = String.class)
+    public JLabel getLbIFLCentralInd() {
+        return lbIFLCentralInd;
+    }
+
+    @MapFrame(get = "getMultIFLTraseira", target = L11.class, type = String.class)
+    public JLabel getLbIFLTraseiraInd() {
+        return lbIFLTraseiraInd;
+    }
+
+    @MapFrame(field = "micropctind", target = L11.class, type = String.class)
+    public JLabel getLbMicroPctInd() {
+        return lbMicroPctInd;
+    }
+
+    @MapFrame(field = "micropctset", target = L11.class, type = String.class)
+    public JLabel getLbMicroPctSet() {
+        return lbMicroPctSet;
+    }
+
+    @MapFrame(field = "microesqind", target = L11.class, type = String.class)
+    public JLabel getLbMicroEsqInd() {
+        return lbMicroEsqInd;
+    }
+
+    @MapFrame(field = "microesqset", target = L11.class, type = String.class)
+    public JLabel getLbMicroEsqSet() {
+        return lbMicroEsqSet;
+    }
+
+    @MapFrame(field = "microesteiraind", target = L11.class, type = String.class)
+    public JLabel getLbMicroEsteiraInd() {
+        return lbMicroEsteiraInd;
+    }
+
+    @MapFrame(field = "microesteiraset", target = L11.class, type = String.class)
+    public JLabel getLbMicroEsteiraSet() {
+        return lbMicroEsteiraSet;
+    }
+
+    @MapFrame(field = "microexaustorind", target = L11.class, type = String.class)
+    public JLabel getLbMicroExaustorInd() {
+        return lbMicroExaustorInd;
+    }
+
+    @MapFrame(field = "microexaustorset", target = L11.class, type = String.class)
+    public JLabel getLbMicroExaustorSet() {
+        return lbMicroExaustorSet;
+    }
+
+    @MapFrame(field = "microrefrigeradoind", target = L11.class, type = String.class)
+    public JLabel getLbMicroRefrigeradoInd() {
+        return lbMicroRefrigeradoInd;
+    }
+
+    @MapFrame(field = "microrefrigeradoset", target = L11.class, type = String.class)
+    public JLabel getLbMicroRefrigeradoSet() {
+        return lbMicroRefrigeradoSet;
+    }
+
+    @MapFrame(field = "vulc1queimadorind", target = L11.class, type = String.class)
+    public JLabel getLbVulc1QueimadorInd() {
+        return lbVulc1QueimadorInd;
+    }
+
+    @MapFrame(field = "vulc1queimadorset", target = L11.class, type = String.class)
+    public JLabel getLbVulc1QueimadorSet() {
+        return lbVulc1QueimadorSet;
+    }
+
+    @MapFrame(field = "vulc1queimador2ind", target = L11.class, type = String.class)
+    public JLabel getLbVulc1Queimador2Ind() {
+        return lbVulc1Queimador2Ind;
+    }
+
+    @MapFrame(field = "vulc1queimador2set", target = L11.class, type = String.class)
+    public JLabel getLbVulc1Queimador2Set() {
+        return lbVulc1Queimador2Set;
+    }
+
+    @MapFrame(field = "vulc1esteiraind", target = L11.class, type = String.class)
+    public JLabel getLbVulc1EsteiraInd() {
+        return lbVulc1EsteiraInd;
+    }
+
+    @MapFrame(field = "vulc1esteiraset", target = L11.class, type = String.class)
+    public JLabel getLbVulc1EsteiraSet() {
+        return lbVulc1EsteiraSet;
+    }
+
+    @MapFrame(field = "puller1velocidadeset", target = L11.class, type = String.class)
+    public JLabel getLbPuller1VelocidadeSet() {
+        return lbPuller1VelocidadeSet;
+    }
+
+    @MapFrame(field = "vulc2queimadorind", target = L11.class, type = String.class)
+    public JLabel getLbVulc2QueimadorInd() {
+        return lbVulc2QueimadorInd;
+    }
+
+    @MapFrame(field = "vulc2queimadorset", target = L11.class, type = String.class)
+    public JLabel getLbVulc2QueimadorSet() {
+        return lbVulc2QueimadorSet;
+    }
+
+    @MapFrame(field = "vulc2queimador2ind", target = L11.class, type = String.class)
+    public JLabel getLbVulc2Queimador2Ind() {
+        return lbVulc2Queimador2Ind;
+    }
+
+    @MapFrame(field = "vulc2queimador2set", target = L11.class, type = String.class)
+    public JLabel getLbVulc2Queimador2Set() {
+        return lbVulc2Queimador2Set;
+    }
+
+    @MapFrame(field = "vulc2esteiraind", target = L11.class, type = String.class)
+    public JLabel getLbVulc2EsteiraInd() {
+        return lbVulc2EsteiraInd;
+    }
+
+    @MapFrame(field = "vulc2esteiraset", target = L11.class, type = String.class)
+    public JLabel getLbVulc2EsteiraSet() {
+        return lbVulc2EsteiraSet;
+    }
+
+    @MapFrame(field = "banheira1reservatorioind", target = L11.class, type = String.class)
+    public JLabel getLbBanheirareseRvatorioInd() {
+        return lbBanheirareseRvatorioInd;
+    }
+
+    @MapFrame(field = "banheira1onof", target = L11.class, type = String.class)
+    public JLabel getLbaBanheira1BombaChillerON() {
+        return lbaBanheira1BombaChillerON;
+    }
+
+    @MapFrame(field = "banheira1bombatanqueonof", target = L11.class, type = String.class)
+    public JLabel getLbaBanheira1BombaTanque() {
+        return lbaBanheira1BombaTanque;
+    }
+
+    @MapFrame(field = "pullerinversoronof", target = L11.class, type = String.class)
+    public JLabel getLbPuller() {
+        return lbPuller;
+    }
+
+    @MapFrame(field = "pinturab1set", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB1Set() {
+        return lbPinturaB1Set;
+    }
+
+    @MapFrame(field = "pinturab2set", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB2Set() {
+        return lbPinturaB2Set;
+    }
+
+    @MapFrame(field = "pinturab3set", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB3Set() {
+        return lbPinturaB3Set;
+    }
+
+    @MapFrame(field = "pinturab4set", target = L11.class, type = String.class)
+    public JLabel getLbPinturaB4Set() {
+        return lbPinturaB4Set;
+    }
+
+    @MapFrame(field = "iflampfrontal", target = L11.class, type = String.class)
+    public JLabel getLbIFLFrontalSet() {
+        return lbIFLFrontalSet;
+    }
+
+    @MapFrame(field = "iflampcentral", target = L11.class, type = String.class)
+    public JLabel getLbIFLCentralSet() {
+        return lbIFLCentralSet;
+    }
+
+    @MapFrame(field = "iflamptraseira", target = L11.class, type = String.class)
+    public JLabel getLbIFLTraseiraSet() {
+        return lbIFLTraseiraSet;
+    }
+
+    @MapFrame(field = "perfil", target = L11.class, type = String.class)
+    public JLabel getLbPerfil() {
+        return lbPerfil;
+    }
+
+    @MapFrame(field = "ifexaustoronof", target = L11.class, type = String.class)
+    public JLabel getLbExaustor() {
+        return lbExaustor;
+    }
+
+    @MapFrame(field = "ifesteiraind", target = L11.class, type = String.class)
+    public JLabel getLbIFLEsteiraInd() {
+        return lbIFLEsteiraInd;
+    }
+
+    @MapFrame(field = "ifesteiraset", target = L11.class, type = String.class)
+    public JLabel getLbIFLEsteiraSet() {
+        return lbIFLEsteiraSet;
+    }
+
+    @MapFrame(field = "b1tempchillerind", target = L11.class, type = String.class)
+    public JLabel getLbMicroPctInd1() {
+        return lbMicroPctInd1;
+    }
+
+    @MapFrame(field = "b1tempchillerset", target = L11.class, type = String.class)
+    public JLabel getLbMicroPctSet1() {
+        return lbMicroPctSet1;
+    }
+
+    @MapFrame(field = "b1reserset", target = L11.class, type = String.class)
+    public JLabel getLbBanheirareseRvatorioSet() {
+        return lbBanheirareseRvatorioSet;
+    }
+
+    @MapFrame(field = "b2tempchillerind", target = L11.class, type = String.class)
+    public JLabel getLbB2ChillerInd() {
+        return lbB2ChillerInd;
+    }
+
+    @MapFrame(field = "b2tempchillerset", target = L11.class, type = String.class)
+    public JLabel getLbB2ChillerSet() {
+        return lbB2ChillerSet;
+    }
+
+    @MapFrame(field = "b2reserset", target = L11.class, type = String.class)
+    public JLabel getLbB2TanqueSet() {
+        return lbB2TanqueSet;
+    }
+
+    @MapFrame(field = "banheira2reservatorioind", target = L11.class, type = String.class)
+    public JLabel getLbB2TanqueInd() {
+        return lbB2TanqueInd;
+    }
+
+    @MapFrame(field = "banheira2onof", target = L11.class, type = String.class)
+    public JLabel getLbaBanheira2BombaChiller() {
+        return lbaBanheira2BombaChiller;
+    }
+
+    @MapFrame(field = "banheira2bombatanqueonof", target = L11.class, type = String.class)
+    public JLabel getLbaBanheira2BombaTanque() {
+        return lbaBanheira2BombaTanque;
+    }
+
+    @MapFrame(field = "b3tempchillerind", target = L11.class, type = String.class)
+    public JLabel getLbB3ChillerInd() {
+        return lbB3ChillerInd;
+    }
+
+    @MapFrame(field = "b3tempchillerset", target = L11.class, type = String.class)
+    public JLabel getLbB3ChillerSet() {
+        return lbB3ChillerSet;
+    }
+
+    @MapFrame(field = "b3reserset", target = L11.class, type = String.class)
+    public JLabel getLbB3TanqueSet() {
+        return lbB3TanqueSet;
+    }
+
+    @MapFrame(field = "banheira3reservatorioind", target = L11.class, type = String.class)
+    public JLabel getLbB3TanqueInd() {
+        return lbB3TanqueInd;
+    }
+
+    @MapFrame(field = "banheira3onof", target = L11.class, type = String.class)
+    public JLabel getLbaBanheira3BombaChiller() {
+        return lbaBanheira3BombaChiller;
+    }
+
+    @MapFrame(field = "banheira3bombatanqueonof", target = L11.class, type = String.class)
+    public JLabel getLbaBanheira3BombaTanque() {
+        return lbaBanheira3BombaTanque;
+    }
+
+    @MapFrame(field = "puller2velocidadeind", target = L11.class, type = String.class)
+    public JLabel getLbPuller2VelocidadeInd() {
+        return lbPuller2VelocidadeInd;
+    }
+
+    @MapFrame(field = "puller2velocidadeset", target = L11.class, type = String.class)
+    public JLabel getLbPuller2VelocidadeSet() {
+        return lbPuller2VelocidadeSet;
+    }
+
+    @MapFrame(field = "puller2inversoronof", target = L11.class, type = String.class)
+    public JLabel getLbPuller2() {
+        return lbPuller2;
+    }
+
+    @MapFrame(field = "puller3velocidadeind", target = L11.class, type = String.class)
+    public JLabel getLbPuller3VelocidadeInd() {
+        return lbPuller3VelocidadeInd;
+    }
+
+    @MapFrame(field = "puller3velocidadeset", target = L11.class, type = String.class)
+    public JLabel getLbPuller3VelocidadeSet() {
+        return lbPuller3VelocidadeSet;
+    }
+
+    @MapFrame(field = "puller3inversoronof", target = L11.class, type = String.class)
+    public JLabel getLbPuller3() {
+        return lbPuller3;
+    }
+
+    @MapFrame(field = "ifventilador", target = L11.class, type = String.class)
+    public JLabel getLbVentilador() {
+        return lbVentilador;
+    }
+
+    @MapFrame(field = "cortvelocidade", target = L11.class, type = String.class)
+    public JLabel getLbCortadeiraVeloSet() {
+        return lbCortadeiraVeloSet;
+    }
+
+    @MapFrame(field = "comprimento", target = L11.class, type = String.class)
+    public JLabel getLbComprimentoSet() {
+        return lbComprimentoSet;
+    }
+
+    @MapFrame(field = "cortserrarecuo", target = L11.class, type = String.class)
+    public JLabel getLbCortRecuo() {
+        return lbCortRecuo;
+    }
+
+    @MapFrame(field = "cortserraavanco", target = L11.class, type = String.class)
+    public JLabel getLbCortAvanc() {
+        return lbCortAvanc;
+    }
+
+    @MapFrame(field = "alarmexta", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbExtA() {
+        return lbExtA;
+    }
+
+    @MapFrame(field = "alarmextb", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbExtB() {
+        return lbExtB;
+    }
+
+    @MapFrame(field = "alarmextc", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbExtC() {
+        return lbExtC;
+    }
+
+    @MapFrame(field = "alarmextd", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbExtD() {
+        return lbExtD;
+    }
+
+    @MapFrame(field = "alarmmc", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbMicroondas() {
+        return lbMicroondas;
+    }
+
+    @MapFrame(field = "alarmhotair1", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbHotAir1() {
+        return lbHotAir1;
+    }
+
+    @MapFrame(field = "alarmhotair2", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbHotAir2() {
+        return lbHotAir2;
+    }
+
+    @MapFrame(field = "alarmb1", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbBanheira1() {
+        return lbBanheira1;
+    }
+
+    @MapFrame(field = "alarmpuller1", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbPuller1() {
+        return lbPuller1;
+    }
+
+    @MapFrame(field = "alarmpintura", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbPintura() {
+        return lbPintura;
+    }
+
+    @MapFrame(field = "alarmir", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbIR() {
+        return lbIR;
+    }
+
+    @MapFrame(field = "alarmb2", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbBanheira2() {
+        return lbBanheira2;
+    }
+
+    @MapFrame(field = "alarmb3", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbBanheira3() {
+        return lbBanheira3;
+    }
+
+    @MapFrame(field = "alarmpuller2", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbPulleralarm2() {
+        return lbPulleralarm2;
+    }
+
+    @MapFrame(field = "alarmpuller3", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbPulleralarm3() {
+        return lbPulleralarm3;
+    }
+
+    @MapFrame(field = "alarmcort", target = L11_Alarmes.class, type = String.class)
+    public JLabel getLbCortadeira() {
+        return lbCortadeira;
+    }
+
+    @MapFrame(get = "getExtarpmStr", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtARpm() {
+        return lbExtARpm;
+    }
+
+    @MapFrame(get = "getExtbrpmStr", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtBRpm() {
+        return lbExtBRpm;
+    }
+
+    @MapFrame(get = "getExtcrpmStr", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtCRpm() {
+        return lbExtCRpm;
+    }
+
+    @MapFrame(get = "getExtdrpmStr", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtDRpm() {
+        return lbExtDRpm;
+    }
+
+    @MapFrame(field = "extabar", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtABar() {
+        return lbExtABar;
+    }
+
+    @MapFrame(field = "extbbar", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtBBar() {
+        return lbExtBBar;
+    }
+
+    @MapFrame(field = "extcbar", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtCBar() {
+        return lbExtCBar;
+    }
+
+    @MapFrame(field = "extdbar", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbExtDBar() {
+        return lbExtDBar;
+    }
+
+    @MapFrame(field = "puller1velocidadeind", target = L11_Criticos.class, type = String.class)
+    public JLabel getLbPuller1VelocidadeInd() {
+        return lbPuller1VelocidadeInd;
     }
 
     @SuppressWarnings("unchecked")

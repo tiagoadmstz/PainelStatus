@@ -727,4 +727,32 @@ public class L11 extends SuperObject {
         this.cortserraavanco = cortserraavanco;
     }
 
+    public float getMultPintura1() {
+        return pinturab1set * pintura1onof;
+    }
+
+    public float getMultPintura2() {
+        return pinturab2set * pintura2onof;
+    }
+
+    public float getMultPintura3() {
+        return pinturab3set * pintura3onof;
+    }
+
+    public float getMultPintura4() {
+        return pinturab4set * pintura4onof;
+    }
+
+    public float getMultIFLFrontal() {
+        return iflampfrontal * iflampfonof;
+    }
+
+    public float getMultIFLCentral() {
+        return iflampcentral * iflampconof;
+    }
+
+    public float getMultIFLTraseira() {
+        return iflamptraseira * iflamptonof;
+    }
+    
 }

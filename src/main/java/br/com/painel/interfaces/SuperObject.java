@@ -18,16 +18,37 @@ public abstract class SuperObject {
 
     private final String formatStr = "%1$,.1f";
 
+    /**
+     * Faz a formatação de uma variável float para uma string com apenas um
+     * número após a vírgula.
+     *
+     * @param number float Número que deve ser formatado
+     * @return String com valor formatado
+     */
     protected String numberFormat(float number) {
         return String.format(formatStr, number);
     }
 
+    /**
+     * Faz a formatação de uma variável doable para uma string com apenas um
+     * número após a vírgula.
+     *
+     * @param number double número que deve ser formatado
+     * @return String com valor formatado
+     */
     protected String numberFormat(double number) {
         return String.format(formatStr, number);
     }
 
+    /**
+     * Faz a formatação de uma variável double para uma string com apenas um
+     * número após a vírgula e o símbolo de porcentagem.
+     *
+     * @param number double número que deve ser formatado
+     * @return String com valor formatado
+     */
     protected String percentFormat(double number) {
-        return String.format("%.1f", number) + "%";
+        return String.format(formatStr, number) + "%";
     }
 
     public void setValuesByResultSet(ResultSet rst) {
